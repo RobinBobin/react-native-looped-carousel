@@ -5,10 +5,10 @@
   },
   "description": "A looped carousel for React Native",
   "devDependencies": {
-    "@robinbobin/ts-eslint-prettier": "^3.1.0",
+    "@robinbobin/prettier-config": "^0.0.3",
+    "@robinbobin/ts-config": "^0.0.2",
     "@types/react": "^19.2.2",
     "eslint": "^9.38.0",
-    "eslint-plugin-react-hooks": "^7.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
@@ -26,7 +26,6 @@
   ],
   "lint-staged": {
     "*.{json,md,mjs,ts,tsx}": [
-      "eslint --fix",
       "prettier . --write"
     ]
   },

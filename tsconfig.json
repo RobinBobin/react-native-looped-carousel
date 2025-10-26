@@ -3,6 +3,6 @@
     "declaration": true,
     "outDir": "js"
   },
-  "extends": "@robinbobin/ts-eslint-prettier/tsconfig.base",
+  "extends": "@robinbobin/ts-config",
   "include": ["./*.mjs", "./src/**/*.ts", "./src/**/*.tsx"]
 }
