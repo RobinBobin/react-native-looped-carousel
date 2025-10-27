@@ -4,5 +4,6 @@
     "outDir": "js"
   },
   "extends": "@robinbobin/ts-config",
-  "include": ["./*.mjs", "./src/**/*.ts", "./src/**/*.tsx"]
+  "files": ["eslint.config.js"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }
