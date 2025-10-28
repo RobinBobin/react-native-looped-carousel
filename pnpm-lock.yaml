@@ -15,8 +15,8 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3(prettier@3.6.2)
       '@robinbobin/ts-config':
-        specifier: ^0.0.3
-        version: 0.0.3(typescript@5.9.3)
+        specifier: ^0.0.4
+        version: 0.0.4(typescript@5.9.3)
       '@types/react':
         specifier: ^19.2.2
         version: 19.2.2
@@ -145,8 +145,8 @@ packages:
     peerDependencies:
       prettier: ^3.6.2
 
-  '@robinbobin/ts-config@0.0.3':
-    resolution: {integrity: sha512-f0vHD3YkVyv7cixq4aacqb2uZFLbmsageE57gH535zCTXBeF8rEttq0Z1i4BXmcJuKubrI8gabfCIPwMEu58IQ==}
+  '@robinbobin/ts-config@0.0.4':
+    resolution: {integrity: sha512-Fm3Dll2Cz2iNKM2QVHJ1N469Qe3wUoNfYrSQqOb/TlCNiW6JULIiGe0MfyOwtoNnxkbKd0sU1jzQl2R6q/3OBg==}
     peerDependencies:
       typescript: ^5.9.3
 
@@ -1024,7 +1024,7 @@ snapshots:
     dependencies:
       prettier: 3.6.2
 
-  '@robinbobin/ts-config@0.0.3(typescript@5.9.3)':
+  '@robinbobin/ts-config@0.0.4(typescript@5.9.3)':
     dependencies:
       typescript: 5.9.3
 
