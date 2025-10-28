@@ -1,6 +1,4 @@
-import parentConfig from '@robinbobin/eslint-config'
+import parentConfig from '@robinbobin/eslint-config-react'
+import { defineConfig } from 'eslint/config'
 
-/** @type import("eslint/config").Config[] */
-const config = [...parentConfig]
-
-export default config
+export default defineConfig(parentConfig)

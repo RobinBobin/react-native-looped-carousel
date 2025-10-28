@@ -6,6 +6,7 @@
   "description": "A looped carousel for React Native",
   "devDependencies": {
     "@robinbobin/eslint-config": "^0.0.2",
+    "@robinbobin/eslint-config-react": "^0.0.1",
     "@robinbobin/prettier-config": "^0.0.3",
     "@robinbobin/ts-config": "^0.0.4",
     "@types/react": "^19.2.2",
