@@ -3,6 +3,10 @@
   "bugs": {
     "url": "https://github.com/RobinBobin/react-native-looped-carousel/issues"
   },
+  "dependencies": {
+    "mobx-react-lite": "^4.1.1",
+    "mobx-state-tree": "^7.0.2"
+  },
   "description": "A looped carousel for React Native",
   "devDependencies": {
     "@robinbobin/eslint-config": "^0.0.2",
