@@ -14,6 +14,9 @@ importers:
       mobx-state-tree:
         specifier: ^7.0.2
         version: 7.0.2(mobx@6.15.0)(typescript@5.9.3)
+      radashi:
+        specifier: ^12.7.0
+        version: 12.7.0
     devDependencies:
       '@robinbobin/eslint-config':
         specifier: ^0.0.2
@@ -1692,6 +1695,10 @@ packages:
 
   queue@6.0.2:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
+
+  radashi@12.7.0:
+    resolution: {integrity: sha512-rft1uBEcQ/LF1niygWFOGzQ1YbSEMY51YilitWsaMXZZwVNyUp2VGB7Y43ZhzJrD3IJw08l9d6Ada4rR6lGGrg==}
+    engines: {node: '>=16.0.0'}
 
   range-parser@1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
@@ -3930,6 +3937,8 @@ snapshots:
   queue@6.0.2:
     dependencies:
       inherits: 2.0.4
+
+  radashi@12.7.0: {}
 
   range-parser@1.2.1: {}
 

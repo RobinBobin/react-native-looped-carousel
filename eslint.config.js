@@ -25,11 +25,5 @@ export default defineConfig([
         }
       ]
     }
-  },
-  {
-    files: ['./src/mst/**/*.ts'],
-    rules: {
-      '@typescript-eslint/no-empty-object-type': 'off'
-    }
   }
 ])
