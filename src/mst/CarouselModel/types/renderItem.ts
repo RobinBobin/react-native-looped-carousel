@@ -5,6 +5,8 @@ type TRenderItemParams<TItem> = ReadonlyDeep<{
   item: TItem
 }>
 
-type TRenderItem<TItem> = (params: TRenderItemParams<TItem>) => void
+type TRenderItem<TItem> = (
+  params: TRenderItemParams<TItem>
+) => React.ReactElement
 
 export type { TRenderItem, TRenderItemParams }

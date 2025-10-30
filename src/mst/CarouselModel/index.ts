@@ -8,13 +8,13 @@ import type {
 } from './types'
 
 import { types } from 'mobx-state-tree'
-import { noop } from 'radashi'
+import { createElement, Fragment } from 'react'
 
 const CarouselModel = types
   .model('CarouselModel')
   .volatile<ICarouselModelDataRelatedVolatile<unknown>>(() => ({
     data: [],
-    renderItem: noop
+    renderItem: (): React.ReactElement => createElement(Fragment)
   }))
   .volatile<ICarouselModelVolatile>(() => ({}))
   .actions<TCarouselModelDataRelatedActions<unknown>>(self => ({
