@@ -1,14 +1,18 @@
 import type { ICarouselModelInstance } from '../../mst'
-import type { TUseCarouselModelParams } from './types'
+import type {
+  IUseCarouselModelReturnType,
+  TUseCarouselModelParams
+} from './types'
 
 import { useMemo } from 'react'
 
+import { Carousel } from '../../components/Carousel'
 import { CarouselModel } from '../../mst'
 
-export const useCarouselModel = <TItem>({
+export function useCarouselModel<TItem>({
   onPostCreateModel,
   onPreCreateModel
-}: TUseCarouselModelParams<TItem>): ICarouselModelInstance<TItem> => {
+}: TUseCarouselModelParams<TItem>): IUseCarouselModelReturnType<TItem> {
   return useMemo(() => {
     onPreCreateModel?.()
 
@@ -17,6 +21,9 @@ export const useCarouselModel = <TItem>({
 
     onPostCreateModel?.(carouselModel)
 
-    return carouselModel
+    return {
+      carousel: <Carousel carouselModel={carouselModel} />,
+      carouselModel
+    }
   }, [onPostCreateModel, onPreCreateModel])
 }

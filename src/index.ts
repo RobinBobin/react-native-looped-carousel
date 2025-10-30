@@ -1,5 +1,9 @@
 // hooks
-export type { TCarouselSetupCallback, TUseCarouselModelParams } from './hooks'
+export type {
+  IUseCarouselModelReturnType,
+  TCarouselSetupCallback,
+  TUseCarouselModelParams
+} from './hooks'
 export { useCarouselModel } from './hooks'
 
 // mst

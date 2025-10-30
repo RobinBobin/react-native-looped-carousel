@@ -1,2 +1,3 @@
-export type { TCarouselSetupCallback } from './carouselSetupCallback'
-export type { TUseCarouselModelParams } from './useCarouselModelParams'
+// eslint-disable-next-line import-x/no-unused-modules
+export * from './carouselSetupCallback'
+export * from './useCarouselModel'

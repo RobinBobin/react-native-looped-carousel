@@ -5,6 +5,11 @@ import { defineConfig } from 'eslint/config'
 export default defineConfig([
   ...parentConfig,
   {
+    languageOptions: {
+      parserOptions: {
+        projectService: true
+      }
+    },
     rules: {
       '@typescript-eslint/no-invalid-void-type': [
         'error',

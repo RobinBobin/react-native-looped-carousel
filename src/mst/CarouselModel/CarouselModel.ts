@@ -8,7 +8,7 @@ import type {
   TRenderItem
 } from './types'
 
-import { types } from 'mobx-state-tree'
+import { getType, types } from 'mobx-state-tree'
 
 const CarouselModel = types
   .model('CarouselModel')
@@ -35,6 +35,9 @@ const CarouselModel = types
     }
   }))
   .actions(self => ({
+    hideCarouselPlaceholder(this: void): void {
+      self.isCarouselPlaceholderShown = false
+    },
     setCarouselPlaceholderContainerStyle(
       this: void,
       carouselPlaceholderContainerStyle: StyleProp<ViewStyle>
@@ -49,6 +52,15 @@ const CarouselModel = types
       renderCarouselPlaceholder: TRenderCarouselPlaceholder
     ): void {
       self.renderCarouselPlaceholder = renderCarouselPlaceholder
+    },
+    showCarouselPlaceholder(this: void): void {
+      if (!self.renderCarouselPlaceholder) {
+        console.warn(
+          `'${getType(self).name}.showCarouselPlaceholder()': 'self.renderCarouselPlaceholder' is not defined.`
+        )
+      }
+
+      self.isCarouselPlaceholderShown = true
     }
   }))
 
