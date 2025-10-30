@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "declarationDir": "js/types",
+    "jsx": "react-native",
     "outDir": "js"
   },
   "extends": "@robinbobin/ts-config",

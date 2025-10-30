@@ -9,7 +9,7 @@ type TCarouselModelDataRelatedActions<TItem> = {
 
 interface ICarouselModelDataRelatedVolatile<TItem> {
   data: readonly TItem[]
-  renderItem: TRenderItem<TItem>
+  renderItem?: TRenderItem<TItem>
 }
 
 export type {
