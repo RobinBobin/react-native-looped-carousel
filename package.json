@@ -52,7 +52,8 @@
   },
   "scripts": {
     "prepack": "./prepack.sh",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prettify": "tsc && eslint --fix && prettier . --write"
   },
   "type": "module",
   "version": "0.0.1"
