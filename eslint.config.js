@@ -16,6 +16,10 @@ export default defineConfig([
         {
           allow: [
             {
+              from: 'file',
+              name: ['ICarouselModelInstance']
+            },
+            {
               from: 'package',
               name: ['RecursiveArray', 'RegisteredStyle', 'ViewStyle'],
               package: 'react-native'
