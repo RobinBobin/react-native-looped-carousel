@@ -1,2 +1,8 @@
-// eslint-disable-next-line import-x/no-unused-modules
-export * from './CarouselModel'
+export type {
+  ICarouselModelInstance,
+  TRenderCarouselPlaceholder,
+  TRenderItem,
+  TRenderItemParams,
+  TWithCarouselModel
+} from './CarouselModel'
+export { CarouselModel } from './CarouselModel'

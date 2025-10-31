@@ -6,7 +6,7 @@ import type {
 
 import { useMemo } from 'react'
 
-import { Carousel } from '../../components/Carousel'
+import { Carousel } from '../../components'
 import { CarouselModel } from '../../mst'
 
 export function useCarouselModel<TItem>({

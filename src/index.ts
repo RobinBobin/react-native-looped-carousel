@@ -1,17 +1,4 @@
-// hooks
-export type {
-  IUseCarouselModelReturnType,
-  TCarouselSetupCallback,
-  TUseCarouselModelParams
-} from './hooks'
-export { useCarouselModel } from './hooks'
-
-// mst
-export type {
-  ICarouselModelInstance,
-  TRenderCarouselPlaceholder,
-  TRenderItem,
-  TRenderItemParams,
-  TWithCarouselModel
-} from './mst'
-export { CarouselModel } from './mst'
+// eslint-disable-next-line import-x/no-unused-modules
+export * from './hooks'
+export * from './mst'
+export * from './slideTransitionAnimations'

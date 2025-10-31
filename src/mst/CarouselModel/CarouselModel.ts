@@ -1,5 +1,6 @@
 import type { Instance } from 'mobx-state-tree'
 import type { StyleProp, ViewStyle } from 'react-native'
+import type { TRSlideGroupTransitionAnimation } from '../../slideTransitionAnimations/types'
 import type {
   ICarouselModelDataRelatedVolatile,
   ICarouselModelVolatile,
@@ -10,13 +11,16 @@ import type {
 
 import { getType, types } from 'mobx-state-tree'
 
+import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
+
 const CarouselModel = types
   .model('CarouselModel')
   .volatile<ICarouselModelDataRelatedVolatile<unknown>>(() => ({
     data: []
   }))
   .volatile<ICarouselModelVolatile>(() => ({
-    isCarouselPlaceholderShown: false
+    isCarouselPlaceholderShown: false,
+    slideGroupTransitionAnimation: createStubAnimation()
   }))
   .views(self => ({
     get isCarouselReady(): boolean {
@@ -52,6 +56,12 @@ const CarouselModel = types
       renderCarouselPlaceholder: TRenderCarouselPlaceholder
     ): void {
       self.renderCarouselPlaceholder = renderCarouselPlaceholder
+    },
+    setSlideGroupTransitionAnimation(
+      this: void,
+      slideGroupTransitionAnimation: TRSlideGroupTransitionAnimation
+    ): void {
+      self.slideGroupTransitionAnimation = slideGroupTransitionAnimation
     },
     showCarouselPlaceholder(this: void): void {
       if (!self.renderCarouselPlaceholder) {

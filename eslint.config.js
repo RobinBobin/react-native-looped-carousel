@@ -1,4 +1,3 @@
-import { js } from '@robinbobin/eslint-config/ruleOptions'
 import parentConfig from '@robinbobin/eslint-config-react'
 import { defineConfig } from 'eslint/config'
 
@@ -33,14 +32,13 @@ export default defineConfig([
           ],
           ignoreInferredTypes: true
         }
-      ],
-      'id-length': [
-        'error',
-        {
-          ...js.idLength,
-          exceptionPatterns: ['(setC|c)arouselPlaceholderContainerStyle']
-        }
       ]
+    }
+  },
+  {
+    files: ['./src/mst/CarouselModel/CarouselModel.ts'],
+    rules: {
+      'id-length': 'off'
     }
   }
 ])

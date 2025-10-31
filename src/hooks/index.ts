@@ -1,2 +1,6 @@
-// eslint-disable-next-line import-x/no-unused-modules
-export * from './useCarouselModel'
+export type {
+  IUseCarouselModelReturnType,
+  TCarouselSetupCallback,
+  TUseCarouselModelParams
+} from './useCarouselModel'
+export { useCarouselModel } from './useCarouselModel'

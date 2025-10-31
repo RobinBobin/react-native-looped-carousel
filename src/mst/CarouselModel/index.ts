@@ -1,7 +1,3 @@
+// eslint-disable-next-line import-x/no-unused-modules
 export * from './CarouselModel'
-export type {
-  TRenderCarouselPlaceholder,
-  TRenderItem,
-  TRenderItemParams,
-  TWithCarouselModel
-} from './types'
+export * from './types'
