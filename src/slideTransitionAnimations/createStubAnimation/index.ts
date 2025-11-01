@@ -4,7 +4,8 @@ import { noop, objectify } from 'radashi'
 
 import {
   createCommonSlideTransitionAnimationParams,
-  createWithActiveSlideCount
+  createWithActiveSlideCount,
+  createWithGetBaseSlideTransitionAnimation
 } from '../helpers'
 
 export const createStubAnimation = (): TSlideGroupTransitionAnimation => {
@@ -20,6 +21,7 @@ export const createStubAnimation = (): TSlideGroupTransitionAnimation => {
       })
     ),
     ...createCommonSlideTransitionAnimationParams(),
+    ...createWithGetBaseSlideTransitionAnimation(),
     animate: noop,
     cancelInProgressAnimation: noop,
     isAnimationInProgress: false,

@@ -14,8 +14,15 @@ type TBaseSlideTransitionAnimations = Record<
   IBaseSlideTransitionAnimation
 >
 
+type TRBaseSlideTransitionAnimations = Readonly<TBaseSlideTransitionAnimations>
+
 type TSlideTransitionAnimation = IBaseSlideTransitionAnimation &
   TWithAnimation &
   IWithPrepare
 
-export type { TBaseSlideTransitionAnimations, TSlideTransitionAnimation }
+export type {
+  IBaseSlideTransitionAnimation,
+  TBaseSlideTransitionAnimations,
+  TRBaseSlideTransitionAnimations,
+  TSlideTransitionAnimation
+}

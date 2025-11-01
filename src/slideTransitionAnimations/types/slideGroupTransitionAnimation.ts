@@ -3,13 +3,15 @@ import type { ICommonSlideTransitionAnimationParams } from './commonSlideTransit
 import type { TBaseSlideTransitionAnimations } from './slideTransitionAnimation'
 import type { IWithActiveSlideCount } from './withActiveSlideCount'
 import type { TWithAnimation } from './withAnimation'
+import type { IWithGetBaseSlideTransitionAnimation } from './withGetBaseSlideTransitionAnimation'
 import type { IWithPrepare } from './withPrepare'
 
-type TSlideGroupTransitionAnimation = TBaseSlideTransitionAnimations &
-  ICommonSlideTransitionAnimationParams &
+type TSlideGroupTransitionAnimation = ICommonSlideTransitionAnimationParams &
   IWithActiveSlideCount &
-  TWithAnimation &
-  IWithPrepare
+  IWithGetBaseSlideTransitionAnimation &
+  IWithPrepare &
+  TBaseSlideTransitionAnimations &
+  TWithAnimation
 
 type TRSlideGroupTransitionAnimation =
   ReadonlyDeep<TSlideGroupTransitionAnimation>

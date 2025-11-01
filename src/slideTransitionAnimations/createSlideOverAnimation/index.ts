@@ -3,15 +3,17 @@ import type { TSlideGroupTransitionAnimation } from '../types'
 import { noop, objectify } from 'radashi'
 
 import {
+  combine,
   createCommonSlideTransitionAnimationParams,
-  createWithActiveSlideCount
+  createWithActiveSlideCount,
+  createWithGetBaseSlideTransitionAnimation
 } from '../helpers'
 
 export const createSlideOverAnimation = (): TSlideGroupTransitionAnimation => {
   const withActiveSlideCount = createWithActiveSlideCount(1)
 
-  return {
-    ...objectify(
+  return combine(
+    objectify(
       withActiveSlideCount.slideIds,
       slideId => slideId,
       () => ({
@@ -19,11 +21,14 @@ export const createSlideOverAnimation = (): TSlideGroupTransitionAnimation => {
         useStyle: noop
       })
     ),
-    ...createCommonSlideTransitionAnimationParams(),
-    animate: noop,
-    cancelInProgressAnimation: noop,
-    isAnimationInProgress: false,
-    ...withActiveSlideCount,
-    prepare: noop
-  }
+    createCommonSlideTransitionAnimationParams(),
+    createWithGetBaseSlideTransitionAnimation(),
+    {
+      animate: noop,
+      cancelInProgressAnimation: noop,
+      isAnimationInProgress: false,
+      prepare: noop
+    },
+    withActiveSlideCount
+  )
 }
