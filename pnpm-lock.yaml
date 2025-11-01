@@ -17,6 +17,9 @@ importers:
       radashi:
         specifier: ^12.7.0
         version: 12.7.0
+      simple-common-utils:
+        specifier: ^3.5.0
+        version: 3.5.0(mobx-state-tree@7.0.2(mobx@6.15.0)(typescript@5.9.3))
     devDependencies:
       '@robinbobin/eslint-config':
         specifier: ^0.0.2
@@ -922,6 +925,9 @@ packages:
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
+
+  change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
 
   chrome-launcher@0.15.2:
     resolution: {integrity: sha512-zdLEwNo3aUVzIhKhTtXfxhdvZhUghrnmkvcAq2NoDd+LeOHKf03H5jwZ8T/STsAlzyALkBVK552iaG1fGf1xVQ==}
@@ -1961,6 +1967,11 @@ packages:
   signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
+
+  simple-common-utils@3.5.0:
+    resolution: {integrity: sha512-6x/ZfnMK+O2tvmdI81scSE+iIVjlJ423lFHFgPOZo9+rtb+W4FINXRJdtEzYqQcL/0LXzl6UDzk7pFhH6IS9jQ==}
+    peerDependencies:
+      mobx-state-tree: ^7.0.2
 
   slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
@@ -3256,6 +3267,8 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
+  change-case@5.4.4: {}
+
   chrome-launcher@0.15.2:
     dependencies:
       '@types/node': 24.9.2
@@ -4434,6 +4447,12 @@ snapshots:
   signal-exit@3.0.7: {}
 
   signal-exit@4.1.0: {}
+
+  simple-common-utils@3.5.0(mobx-state-tree@7.0.2(mobx@6.15.0)(typescript@5.9.3)):
+    dependencies:
+      change-case: 5.4.4
+      mobx-state-tree: 7.0.2(mobx@6.15.0)(typescript@5.9.3)
+      radashi: 12.7.0
 
   slash@3.0.0: {}
 

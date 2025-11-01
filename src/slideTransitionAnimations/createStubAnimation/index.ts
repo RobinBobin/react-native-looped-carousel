@@ -2,13 +2,17 @@ import type { TSlideGroupTransitionAnimation } from '../types'
 
 import { noop, objectify } from 'radashi'
 
-import { SLIDE_IDS } from '../../mst/CarouselModel/constants'
-import { createCommonSlideTransitionAnimationParams } from '../helpers'
+import {
+  createCommonSlideTransitionAnimationParams,
+  createWithActiveSlideCount
+} from '../helpers'
 
 export const createStubAnimation = (): TSlideGroupTransitionAnimation => {
+  const withActiveSlideCount = createWithActiveSlideCount()
+
   return {
     ...objectify(
-      SLIDE_IDS,
+      withActiveSlideCount.slideIds,
       slideId => slideId,
       () => ({
         ...createCommonSlideTransitionAnimationParams(),
@@ -19,6 +23,7 @@ export const createStubAnimation = (): TSlideGroupTransitionAnimation => {
     animate: noop,
     cancelInProgressAnimation: noop,
     isAnimationInProgress: false,
+    ...withActiveSlideCount,
     prepare: noop
   }
 }

@@ -6,7 +6,7 @@ export type {
   TSlideData,
   TSlideDatum,
   TSlideId,
-  TSlidePosition,
+  TSlideType,
   TTransitionDirection,
   TWithCarouselModel
 } from './CarouselModel'

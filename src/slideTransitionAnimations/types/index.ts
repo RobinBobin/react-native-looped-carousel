@@ -4,5 +4,6 @@ export type {
   TSlideGroupTransitionAnimation
 } from './slideGroupTransitionAnimation'
 export * from './types'
+export * from './withActiveSlideCount'
 export * from './withAnimation'
 export * from './withPrepare'

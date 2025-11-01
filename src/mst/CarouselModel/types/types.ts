@@ -1,11 +1,11 @@
 type TRenderCarouselPlaceholder = () => React.ReactElement
 
-type TSlideId = 'slide1' | 'slide2' | 'slide3'
+type TSlideId = string & { __brand: 'TSlideId' }
 
 type TTransitionDirection = 'next' | 'previous'
-type TSlidePosition = 'current' | TTransitionDirection
+type TSlideType = 'active' | TTransitionDirection
 
-type TSlideDatum = Readonly<[TSlidePosition, number]>
+type TSlideDatum = Readonly<[TSlideType, number]>
 type TSlideData = Readonly<Record<TSlideId, TSlideDatum>>
 
 export type {
@@ -13,6 +13,6 @@ export type {
   TSlideData,
   TSlideDatum,
   TSlideId,
-  TSlidePosition,
+  TSlideType,
   TTransitionDirection
 }

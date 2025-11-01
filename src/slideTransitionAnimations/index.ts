@@ -1,5 +1,8 @@
 export { VERY_BIG_NUMBER } from './constants'
-export { createCommonSlideTransitionAnimationParams } from './helpers'
+export {
+  createCommonSlideTransitionAnimationParams,
+  createWithActiveSlideCount
+} from './helpers'
 export type {
   ICommonSlideTransitionAnimationParams,
   TAnimatedViewStyle,
