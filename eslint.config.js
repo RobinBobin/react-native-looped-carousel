@@ -1,3 +1,4 @@
+import { ts } from '@robinbobin/eslint-config/ruleOptions'
 import parentConfig from '@robinbobin/eslint-config-react'
 import { defineConfig } from 'eslint/config'
 
@@ -14,6 +15,13 @@ export default defineConfig([
         'error',
         {
           allowAsThisParameter: true
+        }
+      ],
+      '@typescript-eslint/no-magic-numbers': [
+        'error',
+        {
+          ...ts.noMagicNumbers,
+          ignore: [0, 1]
         }
       ],
       '@typescript-eslint/prefer-readonly-parameter-types': [

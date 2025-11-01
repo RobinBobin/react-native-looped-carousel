@@ -1,4 +1,4 @@
-import type { TSlideId } from '../../mst/CarouselModel'
+import type { TSlideId } from '../../mst'
 import type { ICommonSlideTransitionAnimationParams } from './commonSlideTransitionAnimationParams'
 import type { TUseStyle } from './types'
 import type { TWithAnimation } from './withAnimation'

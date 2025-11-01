@@ -6,7 +6,8 @@ import type {
   ICarouselModelVolatile,
   TCarouselModelDataRelatedActions,
   TRenderCarouselPlaceholder,
-  TRenderItem
+  TRenderItem,
+  TTransitionDirection
 } from './types'
 
 import { getType, types } from 'mobx-state-tree'
@@ -19,10 +20,16 @@ const CarouselModel = types
     data: []
   }))
   .volatile<ICarouselModelVolatile>(() => ({
+    isAutoTransitionStarted: false,
     isCarouselPlaceholderShown: false,
-    slideGroupTransitionAnimation: createStubAnimation()
+    isTransitionRequested: false,
+    slideGroupTransitionAnimation: createStubAnimation(),
+    transitionDirection: 'next'
   }))
   .views(self => ({
+    get canTransition(): boolean {
+      return self.data.length > 1 && !self.isTransitionRequested
+    },
     get isCarouselReady(): boolean {
       const isDataReady = Boolean(self.data.length)
       const isRenderItemSet = Boolean(self.renderItem)
@@ -30,9 +37,14 @@ const CarouselModel = types
       return isDataReady && isRenderItemSet && !self.isCarouselPlaceholderShown
     }
   }))
+  .views(self => ({
+    get canStartAutoTransition(): boolean {
+      return !self.isAutoTransitionStarted && self.canTransition
+    }
+  }))
   .actions<TCarouselModelDataRelatedActions<unknown>>(self => ({
     setData(this: void, data: readonly unknown[]): void {
-      self.data = data
+      self.data = data.map(datum => [datum, {}])
     },
     setRenderItem(this: void, renderItem: TRenderItem<unknown>): void {
       self.renderItem = renderItem
@@ -41,6 +53,18 @@ const CarouselModel = types
   .actions(self => ({
     hideCarouselPlaceholder(this: void): void {
       self.isCarouselPlaceholderShown = false
+    },
+    move(this: void, transitionDirection: TTransitionDirection): boolean {
+      if (!self.canTransition) {
+        return false
+      }
+
+      self.isTransitionRequested = true
+      self.transitionDirection = transitionDirection
+
+      self.slideGroupTransitionAnimation.animate()
+
+      return true
     },
     setCarouselPlaceholderContainerStyle(
       this: void,
@@ -71,6 +95,23 @@ const CarouselModel = types
       }
 
       self.isCarouselPlaceholderShown = true
+    },
+    stopAutoTransition(this: void): void {
+      self.isAutoTransitionStarted = false
+    }
+  }))
+  .actions(self => ({
+    startAutoTransition(
+      this: void,
+      transitionDirection: TTransitionDirection
+    ): boolean {
+      if (!self.canStartAutoTransition || !self.move(transitionDirection)) {
+        return false
+      }
+
+      self.isAutoTransitionStarted = true
+
+      return true
     }
   }))
 

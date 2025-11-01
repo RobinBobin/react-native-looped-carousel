@@ -1,3 +1,4 @@
+import type { IItemMetadata } from './itemMetadata'
 import type { TRenderItem } from './renderItem'
 
 // Type 'ICarouselModelDataRelatedActions' does not satisfy the constraint 'ModelActions'.
@@ -8,7 +9,7 @@ type TCarouselModelDataRelatedActions<TItem> = {
 }
 
 interface ICarouselModelDataRelatedVolatile<TItem> {
-  data: readonly TItem[]
+  data: readonly [TItem, IItemMetadata][]
   renderItem?: TRenderItem<TItem>
 }
 
