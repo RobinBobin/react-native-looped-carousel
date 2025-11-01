@@ -1,6 +1,6 @@
 type TRenderCarouselPlaceholder = () => React.ReactElement
 
-type TSlideId = string & { __brand: 'TSlideId' }
+type TSlideId = `slide${number}`
 
 type TTransitionDirection = 'next' | 'previous'
 type TSlideType = 'active' | TTransitionDirection
