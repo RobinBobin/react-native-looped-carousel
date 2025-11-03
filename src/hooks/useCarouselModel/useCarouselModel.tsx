@@ -12,7 +12,7 @@ import { CarouselModel } from '../../mst'
 export function useCarouselModel<TItem>({
   onPostCreateModel,
   onPreCreateModel
-}: TUseCarouselModelParams<TItem>): IUseCarouselModelReturnType<TItem> {
+}: TUseCarouselModelParams<TItem> = {}): IUseCarouselModelReturnType<TItem> {
   return useMemo(() => {
     onPreCreateModel?.()
 

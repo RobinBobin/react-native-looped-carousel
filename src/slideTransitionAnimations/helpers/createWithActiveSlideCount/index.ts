@@ -1,14 +1,15 @@
 import type { TSlideId } from '../../../mst'
 import type { IWithActiveSlideCount } from '../../types'
+import type { TCreateWithActiveSlideCountParams } from './types'
 
 import { verify } from 'simple-common-utils'
 
 import { createSlideIds } from './createSlideIds'
 
-export const createWithActiveSlideCount = (
-  max = Infinity,
-  min = 1
-): IWithActiveSlideCount => {
+export const createWithActiveSlideCount = ({
+  max,
+  min
+}: TCreateWithActiveSlideCountParams): IWithActiveSlideCount => {
   verify(min >= 1, `'createWithActiveSlideCount()': min (${min}) must be >= 1`)
 
   verify(

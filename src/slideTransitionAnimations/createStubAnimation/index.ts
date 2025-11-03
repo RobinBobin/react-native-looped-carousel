@@ -9,7 +9,7 @@ import {
 } from '../helpers'
 
 export const createStubAnimation = (): TSlideGroupTransitionAnimation => {
-  const withActiveSlideCount = createWithActiveSlideCount()
+  const withActiveSlideCount = createWithActiveSlideCount({ max: 1, min: 1 })
 
   return {
     ...objectify(

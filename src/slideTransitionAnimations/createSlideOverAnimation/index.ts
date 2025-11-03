@@ -10,7 +10,7 @@ import {
 } from '../helpers'
 
 export const createSlideOverAnimation = (): TSlideGroupTransitionAnimation => {
-  const withActiveSlideCount = createWithActiveSlideCount(1)
+  const withActiveSlideCount = createWithActiveSlideCount({ max: 1, min: 1 })
 
   return combine(
     objectify(
