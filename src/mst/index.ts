@@ -1,8 +1,8 @@
 export type {
   ICarouselModelInstance,
-  TRenderCarouselPlaceholder,
-  TRenderItem,
-  TRenderItemParams,
+  IItemComponentProps,
+  TCarouselPlaceholder,
+  TItemComponent,
   TSlideData,
   TSlideDatum,
   TSlideId,

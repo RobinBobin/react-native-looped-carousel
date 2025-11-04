@@ -1,15 +1,10 @@
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
 import type { TWithCarouselModel } from '../../../mst'
 
 export function CarouselPlaceholder<TItem>({
-  carouselModel: {
-    carouselPlaceholderContainerStyle,
-    renderCarouselPlaceholder
-  }
+  carouselModel: { CarouselPlaceholder }
 }: TWithCarouselModel<TItem>) {
-  return (
-    <View style={carouselPlaceholderContainerStyle}>
-      {renderCarouselPlaceholder?.() ?? <Text>Carousel placeholder</Text>}
-    </View>
-  )
+  return CarouselPlaceholder ?
+      <CarouselPlaceholder />
+    : <Text>Carousel placeholder</Text>
 }

@@ -31,6 +31,24 @@ export default defineConfig([
             {
               from: 'file',
               name: ['ICarouselModelInstance']
+            }
+          ],
+          ignoreInferredTypes: true
+        }
+      ]
+    }
+  },
+  {
+    files: ['./src/mst/CarouselModel/**/*.ts'],
+    rules: {
+      '@typescript-eslint/prefer-readonly-parameter-types': [
+        'error',
+        {
+          allow: [
+            {
+              from: 'package',
+              name: ['ComponentClass', 'FunctionComponent'],
+              package: 'react'
             },
             {
               from: 'package',
@@ -40,12 +58,7 @@ export default defineConfig([
           ],
           ignoreInferredTypes: true
         }
-      ]
-    }
-  },
-  {
-    files: ['./src/mst/CarouselModel/CarouselModel.ts'],
-    rules: {
+      ],
       'id-length': 'off'
     }
   }

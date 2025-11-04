@@ -5,12 +5,12 @@ import type {
   ICarouselModelDataRelatedVolatile,
   ICarouselModelVolatile,
   TCarouselModelDataRelatedActions,
-  TRenderCarouselPlaceholder,
-  TRenderItem,
+  TCarouselPlaceholder,
+  TItemComponent,
   TTransitionDirection
 } from './types'
 
-import { getType, types } from 'mobx-state-tree'
+import { types } from 'mobx-state-tree'
 
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
@@ -32,9 +32,11 @@ const CarouselModel = types
     },
     get isCarouselReady(): boolean {
       const isDataReady = Boolean(self.data.length)
-      const isRenderItemSet = Boolean(self.renderItem)
+      const isItemComponentSet = Boolean(self.Item)
 
-      return isDataReady && isRenderItemSet && !self.isCarouselPlaceholderShown
+      return (
+        isDataReady && isItemComponentSet && !self.isCarouselPlaceholderShown
+      )
     }
   }))
   .views(self => ({
@@ -46,8 +48,8 @@ const CarouselModel = types
     setData(this: void, data: readonly unknown[]): void {
       self.data = data.map(datum => [datum, {}])
     },
-    setRenderItem(this: void, renderItem: TRenderItem<unknown>): void {
-      self.renderItem = renderItem
+    setItemComponent(this: void, Item: TItemComponent<unknown>): void {
+      self.Item = Item
     }
   }))
   .actions(self => ({
@@ -66,20 +68,17 @@ const CarouselModel = types
 
       return true
     },
-    setCarouselPlaceholderContainerStyle(
+    setCarouselContainerStyle(
       this: void,
-      carouselPlaceholderContainerStyle: StyleProp<ViewStyle>
+      carouselContainerStyle: StyleProp<ViewStyle>
     ): void {
-      self.carouselPlaceholderContainerStyle = carouselPlaceholderContainerStyle
+      self.carouselContainerStyle = carouselContainerStyle
     },
-    setCarouselStyle(this: void, carouselStyle: StyleProp<ViewStyle>): void {
-      self.carouselStyle = carouselStyle
-    },
-    setRenderCarouselPlaceholder(
+    setCarouselPlaceholderComponent(
       this: void,
-      renderCarouselPlaceholder: TRenderCarouselPlaceholder
+      CarouselPlaceholder: TCarouselPlaceholder
     ): void {
-      self.renderCarouselPlaceholder = renderCarouselPlaceholder
+      self.CarouselPlaceholder = CarouselPlaceholder
     },
     setSlideGroupTransitionAnimation(
       this: void,
@@ -88,12 +87,6 @@ const CarouselModel = types
       self.slideGroupTransitionAnimation = slideGroupTransitionAnimation
     },
     showCarouselPlaceholder(this: void): void {
-      if (!self.renderCarouselPlaceholder) {
-        console.warn(
-          `'${getType(self).name}.showCarouselPlaceholder()': 'self.renderCarouselPlaceholder' is not defined.`
-        )
-      }
-
       self.isCarouselPlaceholderShown = true
     },
     stopAutoTransition(this: void): void {

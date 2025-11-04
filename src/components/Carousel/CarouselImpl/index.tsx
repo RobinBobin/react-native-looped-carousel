@@ -6,12 +6,12 @@ import { Slide } from './Slide'
 
 function CarouselImplRaw<TItem>({ carouselModel }: TWithCarouselModel<TItem>) {
   const {
-    carouselStyle,
+    carouselContainerStyle,
     slideGroupTransitionAnimation: { slideIds }
   } = carouselModel
 
   return (
-    <View style={carouselStyle}>
+    <View style={carouselContainerStyle}>
       {slideIds.map(slideId => (
         <Slide carouselModel={carouselModel} key={slideId} slideId={slideId} />
       ))}
