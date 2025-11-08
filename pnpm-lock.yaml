@@ -18,8 +18,8 @@ importers:
         specifier: ^12.7.0
         version: 12.7.0
       simple-common-utils:
-        specifier: ^3.5.0
-        version: 3.5.0(mobx-state-tree@7.0.2(mobx@6.15.0)(typescript@5.9.3))
+        specifier: ^3.5.1
+        version: 3.5.1(mobx-state-tree@7.0.2(mobx@6.15.0)(typescript@5.9.3))
     devDependencies:
       '@robinbobin/eslint-config':
         specifier: ^1.0.2
@@ -1964,8 +1964,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  simple-common-utils@3.5.0:
-    resolution: {integrity: sha512-6x/ZfnMK+O2tvmdI81scSE+iIVjlJ423lFHFgPOZo9+rtb+W4FINXRJdtEzYqQcL/0LXzl6UDzk7pFhH6IS9jQ==}
+  simple-common-utils@3.5.1:
+    resolution: {integrity: sha512-vymXNtCoHzXhfSk2j0f+YBr/46ozdzrjvVa7NSaa5v3hF4cB8JPhFinj5sxdyU9loub8m4N7TSA3pSOhCPgcjA==}
     peerDependencies:
       mobx-state-tree: ^7.0.2
 
@@ -4471,7 +4471,7 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-common-utils@3.5.0(mobx-state-tree@7.0.2(mobx@6.15.0)(typescript@5.9.3)):
+  simple-common-utils@3.5.1(mobx-state-tree@7.0.2(mobx@6.15.0)(typescript@5.9.3)):
     dependencies:
       change-case: 5.4.4
       mobx-state-tree: 7.0.2(mobx@6.15.0)(typescript@5.9.3)

@@ -7,7 +7,7 @@
     "mobx-react-lite": "^4.1.1",
     "mobx-state-tree": "^7.0.2",
     "radashi": "^12.7.0",
-    "simple-common-utils": "^3.5.0"
+    "simple-common-utils": "^3.5.1"
   },
   "description": "A looped carousel for React Native",
   "devDependencies": {
