@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 
 import { Carousel } from '../../components'
 import { CarouselModel } from '../../mst'
+import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
 export function useCarouselModel<TItem>({
   onPostCreateModel,
@@ -18,6 +19,8 @@ export function useCarouselModel<TItem>({
 
     const carouselModel =
       CarouselModel.create() as ICarouselModelInstance<TItem>
+
+    carouselModel.setSlideGroupTransitionAnimation(createStubAnimation())
 
     onPostCreateModel?.(carouselModel)
 

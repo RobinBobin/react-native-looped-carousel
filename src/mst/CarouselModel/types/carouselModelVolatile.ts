@@ -8,11 +8,11 @@ import type {
 
 export interface ICarouselModelVolatile {
   CarouselPlaceholder?: TCarouselPlaceholder
+  _slideGroupTransitionAnimation?: TSlideGroupTransitionAnimation
   carouselContainerStyle?: StyleProp<ViewStyle>
   isAutoTransitionStarted: boolean
   isCarouselPlaceholderShown: boolean
   isTransitionRequested: boolean
   slideData: TSlideData
-  slideGroupTransitionAnimation: TSlideGroupTransitionAnimation
   transitionDirection: TTransitionDirection
 }

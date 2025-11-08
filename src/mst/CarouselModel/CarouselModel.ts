@@ -1,6 +1,9 @@
 import type { Instance } from 'mobx-state-tree'
 import type { StyleProp, ViewStyle } from 'react-native'
-import type { TRSlideGroupTransitionAnimation } from '../../slideTransitionAnimations/types'
+import type {
+  TRSlideGroupTransitionAnimation,
+  TSlideGroupTransitionAnimation
+} from '../../slideTransitionAnimations/types'
 import type {
   ICarouselModelDataRelatedVolatile,
   ICarouselModelVolatile,
@@ -11,8 +14,7 @@ import type {
 } from './types'
 
 import { types } from 'mobx-state-tree'
-
-import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
+import { MstNullishError, verify } from 'simple-common-utils'
 
 const CarouselModel = types
   .model('CarouselModel')
@@ -24,25 +26,45 @@ const CarouselModel = types
     isCarouselPlaceholderShown: false,
     isTransitionRequested: false,
     slideData: {},
-    slideGroupTransitionAnimation: createStubAnimation(),
     transitionDirection: 'next'
   }))
   .views(self => ({
-    get canTransition(): boolean {
-      return self.data.length > 1 && !self.isTransitionRequested
-    },
     get isCarouselReady(): boolean {
-      const isDataReady = Boolean(self.data.length)
-      const isItemComponentSet = Boolean(self.Item)
+      const requirements = [
+        self.Item,
+        self.data.length,
+        !self.isCarouselPlaceholderShown,
+        self._slideGroupTransitionAnimation
+      ]
 
-      return (
-        isDataReady && isItemComponentSet && !self.isCarouselPlaceholderShown
-      )
+      return requirements.every(Boolean)
+    }
+  }))
+  .views(self => ({
+    get canTransition(): boolean {
+      const requirements = [
+        self.data.length > 1,
+        self.isCarouselReady,
+        !self.isTransitionRequested
+      ]
+
+      return requirements.every(Boolean)
     }
   }))
   .views(self => ({
     get canStartAutoTransition(): boolean {
       return !self.isAutoTransitionStarted && self.canTransition
+    },
+    get slideGroupTransitionAnimation(): TSlideGroupTransitionAnimation {
+      verify(
+        self._slideGroupTransitionAnimation,
+        new MstNullishError({
+          entityName: 'slideGroupTransitionAnimationVerified',
+          model: self
+        })
+      )
+
+      return self._slideGroupTransitionAnimation
     }
   }))
   .actions<TCarouselModelDataRelatedActions<unknown>>(self => ({
@@ -85,7 +107,7 @@ const CarouselModel = types
       this: void,
       slideGroupTransitionAnimation: TRSlideGroupTransitionAnimation
     ): void {
-      self.slideGroupTransitionAnimation = slideGroupTransitionAnimation
+      self._slideGroupTransitionAnimation = slideGroupTransitionAnimation
     },
     showCarouselPlaceholder(this: void): void {
       self.isCarouselPlaceholderShown = true
