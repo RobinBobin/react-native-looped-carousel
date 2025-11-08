@@ -8,9 +8,14 @@ type TCarouselModelDataRelatedActions<TItem> = {
   setItemComponent: (Item: TItemComponent<TItem>) => void
 }
 
+type TDatum<TItem> = Readonly<{
+  item: TItem
+  itemMetadata: IItemMetadata
+}>
+
 interface ICarouselModelDataRelatedVolatile<TItem> {
   Item?: TItemComponent<TItem>
-  data: readonly [TItem, IItemMetadata][]
+  data: readonly TDatum<TItem>[]
 }
 
 export type {

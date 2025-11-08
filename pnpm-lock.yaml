@@ -22,11 +22,11 @@ importers:
         version: 3.5.0(mobx-state-tree@7.0.2(mobx@6.15.0)(typescript@5.9.3))
     devDependencies:
       '@robinbobin/eslint-config':
-        specifier: ^0.0.2
-        version: 0.0.2(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3))
+        specifier: ^0.0.6
+        version: 0.0.6(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3))
       '@robinbobin/eslint-config-react':
         specifier: ^0.0.1
-        version: 0.0.1(@robinbobin/eslint-config@0.0.2(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3)))(eslint-plugin-react-hooks@7.0.1(eslint@9.38.0))
+        version: 0.0.1(@robinbobin/eslint-config@0.0.6(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3)))(eslint-plugin-react-hooks@7.0.1(eslint@9.38.0))
       '@robinbobin/prettier-config':
         specifier: ^0.0.3
         version: 0.0.3(prettier@3.6.2)
@@ -528,8 +528,8 @@ packages:
       '@robinbobin/eslint-config': ^0.0.2
       eslint-plugin-react-hooks: ^7.0.1
 
-  '@robinbobin/eslint-config@0.0.2':
-    resolution: {integrity: sha512-6uB9G0wbAmq39cDQw1J/yxZ9KFCH99Rvf7gxP53yx+4yHcWo2Rlf/uOCLDd3g8+ZDI//w1P4phvPJpPKGbhvDw==}
+  '@robinbobin/eslint-config@0.0.6':
+    resolution: {integrity: sha512-DUy9yobsz40pgsxQ+dogygfUKnoNolHw92SCBuCm8Yb5YdV5XeCn3Q5wcZZShnlWIK/8blUvcELhrrJuhCC7/g==}
     peerDependencies:
       '@eslint/js': ^9.38.0
       '@stylistic/eslint-plugin': ^5.5.0
@@ -2838,12 +2838,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.2
 
-  '@robinbobin/eslint-config-react@0.0.1(@robinbobin/eslint-config@0.0.2(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3)))(eslint-plugin-react-hooks@7.0.1(eslint@9.38.0))':
+  '@robinbobin/eslint-config-react@0.0.1(@robinbobin/eslint-config@0.0.6(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3)))(eslint-plugin-react-hooks@7.0.1(eslint@9.38.0))':
     dependencies:
-      '@robinbobin/eslint-config': 0.0.2(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3))
+      '@robinbobin/eslint-config': 0.0.6(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3))
       eslint-plugin-react-hooks: 7.0.1(eslint@9.38.0)
 
-  '@robinbobin/eslint-config@0.0.2(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3))':
+  '@robinbobin/eslint-config@0.0.6(@eslint/js@9.38.0)(@stylistic/eslint-plugin@5.5.0(eslint@9.38.0))(@typescript-eslint/parser@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint@9.38.0))(eslint-plugin-import-x@4.16.1(@typescript-eslint/utils@8.46.2(eslint@9.38.0)(typescript@5.9.3))(eslint@9.38.0))(eslint-plugin-promise@7.2.1(eslint@9.38.0))(eslint-plugin-simple-import-sort@12.1.1(eslint@9.38.0))(eslint@9.38.0)(typescript-eslint@8.46.2(eslint@9.38.0)(typescript@5.9.3))':
     dependencies:
       '@eslint/js': 9.38.0
       '@stylistic/eslint-plugin': 5.5.0(eslint@9.38.0)

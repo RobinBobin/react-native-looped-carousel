@@ -1,10 +1,13 @@
-import { View } from 'react-native'
 import type { TWithCarouselModel } from '../../../mst'
+
 import { observer } from 'mobx-react-lite'
+import { View } from 'react-native'
 
 import { Slide } from './Slide'
 
-function CarouselImplRaw<TItem>({ carouselModel }: TWithCarouselModel<TItem>) {
+function CarouselImplRaw<TItem>({
+  carouselModel
+}: TWithCarouselModel<TItem>): React.ReactElement {
   const {
     carouselContainerStyle,
     slideGroupTransitionAnimation: { slideIds }

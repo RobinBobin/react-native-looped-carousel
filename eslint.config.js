@@ -24,6 +24,13 @@ export default defineConfig([
           ignore: [0, 1]
         }
       ],
+      '@typescript-eslint/no-shadow': [
+        'error',
+        {
+          ...ts.noShadow,
+          allow: ['StyleSheet', 'Text']
+        }
+      ],
       '@typescript-eslint/prefer-readonly-parameter-types': [
         'error',
         {

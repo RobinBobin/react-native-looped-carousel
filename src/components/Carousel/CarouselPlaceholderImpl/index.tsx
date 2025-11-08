@@ -1,9 +1,10 @@
-import { Text } from 'react-native'
 import type { TWithCarouselModel } from '../../../mst'
 
-export function CarouselPlaceholder<TItem>({
+import { Text } from 'react-native'
+
+export function CarouselPlaceholderImpl<TItem>({
   carouselModel: { CarouselPlaceholder }
-}: TWithCarouselModel<TItem>) {
+}: TWithCarouselModel<TItem>): React.ReactElement {
   return CarouselPlaceholder ?
       <CarouselPlaceholder />
     : <Text>Carousel placeholder</Text>

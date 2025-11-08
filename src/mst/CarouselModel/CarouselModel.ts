@@ -23,6 +23,7 @@ const CarouselModel = types
     isAutoTransitionStarted: false,
     isCarouselPlaceholderShown: false,
     isTransitionRequested: false,
+    slideData: {},
     slideGroupTransitionAnimation: createStubAnimation(),
     transitionDirection: 'next'
   }))
@@ -46,7 +47,7 @@ const CarouselModel = types
   }))
   .actions<TCarouselModelDataRelatedActions<unknown>>(self => ({
     setData(this: void, data: readonly unknown[]): void {
-      self.data = data.map(datum => [datum, {}])
+      self.data = data.map(item => ({ item, itemMetadata: {} }))
     },
     setItemComponent(this: void, Item: TItemComponent<unknown>): void {
       self.Item = Item
