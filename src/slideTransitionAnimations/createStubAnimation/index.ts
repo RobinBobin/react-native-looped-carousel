@@ -1,3 +1,4 @@
+import type { TRCarouselModel } from '../../mst/CarouselModel'
 import type { TSlideGroupTransitionAnimation } from '../types'
 
 import { noop, objectify } from 'radashi'
@@ -8,8 +9,14 @@ import {
   createWithGetBaseSlideTransitionAnimation
 } from '../helpers'
 
-export const createStubAnimation = (): TSlideGroupTransitionAnimation => {
-  const withActiveSlideCount = createWithActiveSlideCount({ max: 1, min: 1 })
+export const createStubAnimation = (
+  carouselModel: TRCarouselModel
+): TSlideGroupTransitionAnimation => {
+  const withActiveSlideCount = createWithActiveSlideCount({
+    carouselModel,
+    max: 1,
+    min: 1
+  })
 
   return {
     ...objectify(

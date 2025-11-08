@@ -15,7 +15,6 @@ type TSlideData = Readonly<Record<TSlideId, TSlideDatum>>
 export type {
   TCarouselPlaceholder,
   TSlideData,
-  TSlideDatum,
   TSlideId,
   TSlideType,
   TTransitionDirection

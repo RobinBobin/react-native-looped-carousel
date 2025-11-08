@@ -7,6 +7,7 @@ import type {
 import type {
   ICarouselModelDataRelatedVolatile,
   ICarouselModelVolatile,
+  TCarouselModelCommonActions,
   TCarouselModelDataRelatedActions,
   TCarouselPlaceholder,
   TItemComponent,
@@ -14,7 +15,10 @@ import type {
 } from './types'
 
 import { types } from 'mobx-state-tree'
+import { objectify } from 'radashi'
 import { MstNullishError, verify } from 'simple-common-utils'
+
+import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
 const CarouselModel = types
   .model('CarouselModel')
@@ -67,9 +71,47 @@ const CarouselModel = types
       return self._slideGroupTransitionAnimation
     }
   }))
+  .actions<TCarouselModelCommonActions>(self => ({
+    setSlideData(): void {
+      if (!self.data.length) {
+        self.slideData = {}
+
+        return
+      }
+
+      const { slideIds } = self.slideGroupTransitionAnimation
+
+      let itemIndex = -1
+
+      self.slideData = objectify(
+        slideIds,
+        slideId => slideId,
+        (_, index) => {
+          if (!index) {
+            return {
+              itemIndex: self.data.length - 1,
+              slideType: 'previous'
+            }
+          }
+
+          ++itemIndex
+          itemIndex %= self.data.length
+
+          const slideType = index === slideIds.length - 1 ? 'next' : 'active'
+
+          return {
+            itemIndex,
+            slideType
+          }
+        }
+      )
+    }
+  }))
   .actions<TCarouselModelDataRelatedActions<unknown>>(self => ({
     setData(this: void, data: readonly unknown[]): void {
       self.data = data.map(item => ({ item, itemMetadata: {} }))
+
+      self.setSlideData()
     },
     setItemComponent(this: void, Item: TItemComponent<unknown>): void {
       self.Item = Item
@@ -108,6 +150,8 @@ const CarouselModel = types
       slideGroupTransitionAnimation: TRSlideGroupTransitionAnimation
     ): void {
       self._slideGroupTransitionAnimation = slideGroupTransitionAnimation
+
+      self.setSlideData()
     },
     showCarouselPlaceholder(this: void): void {
       self.isCarouselPlaceholderShown = true
@@ -117,6 +161,9 @@ const CarouselModel = types
     }
   }))
   .actions(self => ({
+    afterCreate(): void {
+      self.setSlideGroupTransitionAnimation(createStubAnimation(self))
+    },
     startAutoTransition(
       this: void,
       transitionDirection: TTransitionDirection

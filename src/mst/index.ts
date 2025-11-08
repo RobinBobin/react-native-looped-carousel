@@ -1,10 +1,6 @@
 export type {
   ICarouselModelInstance,
   IItemComponentProps,
-  TCarouselPlaceholder,
-  TItemComponent,
-  TSlideData,
-  TSlideDatum,
   TSlideId,
   TSlideType,
   TTransitionDirection,

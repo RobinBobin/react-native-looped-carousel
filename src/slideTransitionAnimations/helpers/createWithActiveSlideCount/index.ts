@@ -7,6 +7,7 @@ import { verify } from 'simple-common-utils'
 import { createSlideIds } from './createSlideIds'
 
 export const createWithActiveSlideCount = ({
+  carouselModel,
   max,
   min
 }: TCreateWithActiveSlideCountParams): IWithActiveSlideCount => {
@@ -30,6 +31,8 @@ export const createWithActiveSlideCount = ({
       )
 
       _slideIds = createSlideIds(activeSlideCount)
+
+      carouselModel.setSlideData()
     },
     get maxActiveSlideCount(): number {
       return max
