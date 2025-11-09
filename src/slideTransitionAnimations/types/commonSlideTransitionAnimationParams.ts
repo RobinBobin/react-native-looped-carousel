@@ -5,4 +5,14 @@ interface ICommonSlideTransitionAnimationParams {
   set preTransitionDelay(preTransitionDelay: number)
 }
 
-export type { ICommonSlideTransitionAnimationParams }
+type TCommonSlideTransitionAnimationParam =
+  keyof ICommonSlideTransitionAnimationParams
+
+type TRCommonSlideTransitionAnimationParams =
+  Readonly<ICommonSlideTransitionAnimationParams>
+
+export type {
+  ICommonSlideTransitionAnimationParams,
+  TCommonSlideTransitionAnimationParam,
+  TRCommonSlideTransitionAnimationParams
+}

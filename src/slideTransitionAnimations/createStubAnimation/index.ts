@@ -4,9 +4,10 @@ import type { TSlideGroupTransitionAnimation } from '../types'
 import { noop, objectify } from 'radashi'
 
 import {
+  combine,
   createCommonSlideTransitionAnimationParams,
-  createWithActiveSlideCount,
-  createWithGetBaseSlideTransitionAnimation
+  createRawSlideGroupTransitionAnimation,
+  createWithActiveSlideCount
 } from '../helpers'
 
 export const createStubAnimation = (
@@ -18,21 +19,25 @@ export const createStubAnimation = (
     min: 1
   })
 
-  return {
-    ...objectify(
+  const animation = combine(
+    createRawSlideGroupTransitionAnimation(withActiveSlideCount),
+    {
+      prepare: noop
+    },
+    objectify(
       withActiveSlideCount.slideIds,
       slideId => slideId,
-      () => ({
-        ...createCommonSlideTransitionAnimationParams(),
-        useStyle: noop
-      })
+      () =>
+        combine(createCommonSlideTransitionAnimationParams(), {
+          useStyle: noop
+        })
     ),
-    ...createCommonSlideTransitionAnimationParams(),
-    ...createWithGetBaseSlideTransitionAnimation(),
-    animate: noop,
-    cancelInProgressAnimation: noop,
-    isAnimationInProgress: false,
-    ...withActiveSlideCount,
-    prepare: noop
-  }
+    {
+      animate: noop,
+      cancelInProgressAnimation: noop,
+      isAnimationInProgress: false
+    }
+  )
+
+  return animation
 }

@@ -1,4 +1,5 @@
 export { combine } from './combine'
 export { createCommonSlideTransitionAnimationParams } from './createCommonSlideTransitionAnimationParams'
+export { createRawSlideGroupTransitionAnimation } from './createRawSlideGroupTransitionAnimation'
 export { createWithActiveSlideCount } from './createWithActiveSlideCount'
-export { createWithGetBaseSlideTransitionAnimation } from './createWithGetBaseSlideTransitionAnimation'
+export { getBaseSlideTransitionAnimation } from './getBaseSlideTransitionAnimation'

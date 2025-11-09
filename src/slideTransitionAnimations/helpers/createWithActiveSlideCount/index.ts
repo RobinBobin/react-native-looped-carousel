@@ -1,4 +1,4 @@
-import type { TSlideId } from '../../../mst'
+import type { TRSlideIds } from '../../../mst'
 import type { IWithActiveSlideCount } from '../../types'
 import type { TCreateWithActiveSlideCountParams } from './types'
 
@@ -18,7 +18,7 @@ export const createWithActiveSlideCount = ({
     `'createWithActiveSlideCount()': max (${max}) must be >= min (${min})`
   )
 
-  let _slideIds: TSlideId[] = createSlideIds(max)
+  let _slideIds: TRSlideIds = createSlideIds(max)
 
   return {
     get activeSlideCount(): number {
@@ -40,7 +40,7 @@ export const createWithActiveSlideCount = ({
     get minActiveSlideCount(): number {
       return min
     },
-    get slideIds(): readonly TSlideId[] {
+    get slideIds(): TRSlideIds {
       return _slideIds
     }
   }

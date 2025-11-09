@@ -1,6 +1,7 @@
 type TCarouselPlaceholder = React.ComponentType
 
 type TSlideId = `slide${number}`
+type TRSlideIds = readonly TSlideId[]
 
 type TTransitionDirection = 'next' | 'previous'
 type TSlideType = 'active' | TTransitionDirection
@@ -14,6 +15,7 @@ type TSlideData = Readonly<Record<TSlideId, TSlideDatum>>
 
 export type {
   TCarouselPlaceholder,
+  TRSlideIds,
   TSlideData,
   TSlideId,
   TSlideType,

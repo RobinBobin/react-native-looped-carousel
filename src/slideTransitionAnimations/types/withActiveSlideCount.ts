@@ -1,9 +1,13 @@
-import type { TSlideId } from '../../mst'
+import type { TRSlideIds } from '../../mst'
 
-export interface IWithActiveSlideCount {
+interface IWithActiveSlideCount {
   get activeSlideCount(): number
   set activeSlideCount(activeSlideCount: number)
   get maxActiveSlideCount(): number
   get minActiveSlideCount(): number
-  get slideIds(): readonly TSlideId[]
+  get slideIds(): TRSlideIds
 }
+
+type TRWithActiveSlideCount = Readonly<IWithActiveSlideCount>
+
+export type { IWithActiveSlideCount, TRWithActiveSlideCount }

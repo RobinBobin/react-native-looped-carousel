@@ -1,10 +1,10 @@
-import type { IWithGetBaseSlideTransitionAnimation } from '../types'
+import type { IWithGetBaseSlideTransitionAnimation } from '../../types'
 import type {
   IBaseSlideTransitionAnimation,
   TRBaseSlideTransitionAnimations
-} from '../types/slideTransitionAnimation'
+} from '../../types/slideTransitionAnimation'
 
-import { verify } from 'simple-common-utils'
+import { getBaseSlideTransitionAnimation } from '../getBaseSlideTransitionAnimation'
 
 // eslint-disable-next-line id-length
 export const createWithGetBaseSlideTransitionAnimation =
@@ -13,14 +13,7 @@ export const createWithGetBaseSlideTransitionAnimation =
     return {
       // eslint-disable-next-line id-length
       getBaseSlideTransitionAnimation(slideId): IBaseSlideTransitionAnimation {
-        const animation = this[slideId]
-
-        verify(
-          animation,
-          `'getBaseSlideTransitionAnimation()': no slide transition animation for '${slideId}'`
-        )
-
-        return animation
+        return getBaseSlideTransitionAnimation(this, slideId)
       }
     }
   }

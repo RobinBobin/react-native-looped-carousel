@@ -1,8 +1,5 @@
-export type { ICommonSlideTransitionAnimationParams } from './commonSlideTransitionAnimationParams'
-export type {
-  TRSlideGroupTransitionAnimation,
-  TSlideGroupTransitionAnimation
-} from './slideGroupTransitionAnimation'
+export type * from './commonSlideTransitionAnimationParams'
+export type * from './slideGroupTransitionAnimation'
 export type {
   TBaseSlideTransitionAnimations,
   TRBaseSlideTransitionAnimations
