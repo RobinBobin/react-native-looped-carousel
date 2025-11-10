@@ -6,16 +6,20 @@ import type {
 import { combine } from '../combine'
 import { createCommonSlideTransitionAnimationParamsForGroup } from './createCommonSlideTransitionAnimationParamsForGroup'
 import { createWithGetBaseSlideTransitionAnimation } from './createWithGetBaseSlideTransitionAnimation'
+import { createWithPrepare } from './createWithPrepare'
 
 // eslint-disable-next-line id-length
 export const createRawSlideGroupTransitionAnimation = (
   withActiveSlideCount: TRWithActiveSlideCount
 ): TRawSlideGroupTransitionAnimation => {
-  return combine(
-    createCommonSlideTransitionAnimationParamsForGroup(
-      withActiveSlideCount.slideIds
-    ),
+  const { slideIds } = withActiveSlideCount
+
+  const animation = combine(
+    createCommonSlideTransitionAnimationParamsForGroup(slideIds),
     withActiveSlideCount,
-    createWithGetBaseSlideTransitionAnimation()
+    createWithGetBaseSlideTransitionAnimation(),
+    createWithPrepare(slideIds)
   )
+
+  return animation
 }

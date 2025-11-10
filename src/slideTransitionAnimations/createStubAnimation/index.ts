@@ -21,9 +21,6 @@ export const createStubAnimation = (
 
   const animation = combine(
     createRawSlideGroupTransitionAnimation(withActiveSlideCount),
-    {
-      prepare: noop
-    },
     objectify(
       withActiveSlideCount.slideIds,
       slideId => slideId,

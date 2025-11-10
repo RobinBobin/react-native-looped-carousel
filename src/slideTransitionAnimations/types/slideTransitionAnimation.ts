@@ -20,9 +20,14 @@ type TSlideTransitionAnimation = IBaseSlideTransitionAnimation &
   TWithAnimation &
   IWithPrepare
 
+type TSlideTransitionAnimations = Record<TSlideId, TSlideTransitionAnimation>
+
+type TRSlideTransitionAnimations = Readonly<TSlideTransitionAnimations>
+
 export type {
   IBaseSlideTransitionAnimation,
   TBaseSlideTransitionAnimations,
   TRBaseSlideTransitionAnimations,
+  TRSlideTransitionAnimations,
   TSlideTransitionAnimation
 }

@@ -1,8 +1,10 @@
 export type * from './commonSlideTransitionAnimationParams'
 export type * from './slideGroupTransitionAnimation'
 export type {
-  TBaseSlideTransitionAnimations,
-  TRBaseSlideTransitionAnimations
+  IBaseSlideTransitionAnimation,
+  TRBaseSlideTransitionAnimations,
+  TRSlideTransitionAnimations,
+  TSlideTransitionAnimation
 } from './slideTransitionAnimation'
 export * from './types'
 export * from './withActiveSlideCount'

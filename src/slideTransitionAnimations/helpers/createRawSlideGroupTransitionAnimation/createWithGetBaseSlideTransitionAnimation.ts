@@ -1,8 +1,8 @@
-import type { IWithGetBaseSlideTransitionAnimation } from '../../types'
 import type {
   IBaseSlideTransitionAnimation,
+  IWithGetBaseSlideTransitionAnimation,
   TRBaseSlideTransitionAnimations
-} from '../../types/slideTransitionAnimation'
+} from '../../types'
 
 import { getBaseSlideTransitionAnimation } from '../getBaseSlideTransitionAnimation'
 

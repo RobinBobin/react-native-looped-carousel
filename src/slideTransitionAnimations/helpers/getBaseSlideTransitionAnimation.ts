@@ -2,7 +2,7 @@ import type { TSlideId } from '../../mst'
 import type {
   IBaseSlideTransitionAnimation,
   TRBaseSlideTransitionAnimations
-} from '../types/slideTransitionAnimation'
+} from '../types'
 
 import { verify } from 'simple-common-utils'
 

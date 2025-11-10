@@ -8,10 +8,10 @@ import type { IWithPrepare } from './withPrepare'
 
 type TRawSlideGroupTransitionAnimation = ICommonSlideTransitionAnimationParams &
   IWithActiveSlideCount &
-  IWithGetBaseSlideTransitionAnimation
+  IWithGetBaseSlideTransitionAnimation &
+  IWithPrepare
 
 type TSlideGroupTransitionAnimation = TRawSlideGroupTransitionAnimation &
-  IWithPrepare &
   TBaseSlideTransitionAnimations &
   TWithAnimation
 
