@@ -27,7 +27,7 @@ export const createWithActiveSlideCount = ({
     set activeSlideCount(activeSlideCount: number) {
       verify(
         activeSlideCount >= min && activeSlideCount <= max,
-        `'createWithActiveSlideCount()': min (${min} <= activeSlideCount (${activeSlideCount}) <= max (${max}))`
+        `'createWithActiveSlideCount()': min (${min}) <= activeSlideCount (${activeSlideCount}) <= max (${max}))`
       )
 
       _slideIds = createSlideIds(activeSlideCount)
