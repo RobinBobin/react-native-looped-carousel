@@ -5,6 +5,7 @@ import type {
 
 import { combine } from '../combine'
 import { createCommonSlideTransitionAnimationParamsForGroup } from './createCommonSlideTransitionAnimationParamsForGroup'
+import { createIsAnimationInProgress } from './createIsAnimationInProgress'
 import { createWithGetBaseSlideTransitionAnimation } from './createWithGetBaseSlideTransitionAnimation'
 import { createWithPrepare } from './createWithPrepare'
 
@@ -16,6 +17,7 @@ export const createRawSlideGroupTransitionAnimation = (
 
   const animation = combine(
     createCommonSlideTransitionAnimationParamsForGroup(slideIds),
+    createIsAnimationInProgress(slideIds),
     withActiveSlideCount,
     createWithGetBaseSlideTransitionAnimation(),
     createWithPrepare(slideIds)

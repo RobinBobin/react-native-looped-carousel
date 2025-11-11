@@ -31,8 +31,7 @@ export const createStubAnimation = (
     ),
     {
       animate: noop,
-      cancelInProgressAnimation: noop,
-      isAnimationInProgress: false
+      cancelInProgressAnimation: noop
     }
   )
 
