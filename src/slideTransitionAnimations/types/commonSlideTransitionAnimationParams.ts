@@ -1,18 +1,24 @@
+import type { TRAnimationConfig } from './animationConfig'
+
 interface ICommonSlideTransitionAnimationParams {
-  get duration(): number
-  set duration(duration: number)
+  get animationConfig(): TRAnimationConfig
+  set animationConfig(animationConfig: TRAnimationConfig)
   get preTransitionDelay(): number
   set preTransitionDelay(preTransitionDelay: number)
 }
 
-type TCommonSlideTransitionAnimationParam =
+type TCommonSlideTransitionAnimationParamKey =
   keyof ICommonSlideTransitionAnimationParams
+
+type TCommonSlideTransitionAnimationParamValue =
+  ICommonSlideTransitionAnimationParams[TCommonSlideTransitionAnimationParamKey]
 
 type TRCommonSlideTransitionAnimationParams =
   Readonly<ICommonSlideTransitionAnimationParams>
 
 export type {
   ICommonSlideTransitionAnimationParams,
-  TCommonSlideTransitionAnimationParam,
+  TCommonSlideTransitionAnimationParamKey,
+  TCommonSlideTransitionAnimationParamValue,
   TRCommonSlideTransitionAnimationParams
 }

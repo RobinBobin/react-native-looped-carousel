@@ -1,6 +1,7 @@
 import type { TRSlideIds } from '../../../../mst'
 import type {
   ICommonSlideTransitionAnimationParams,
+  TRAnimationConfig,
   TRBaseSlideTransitionAnimations
 } from '../../../types'
 
@@ -11,11 +12,11 @@ export const createCommonSlideTransitionAnimationParamsForGroup = (
   slideIds: TRSlideIds
 ): ICommonSlideTransitionAnimationParams & TRBaseSlideTransitionAnimations => {
   return {
-    get duration(): number {
-      return ensureEquality('duration', this, slideIds)
+    get animationConfig(): TRAnimationConfig {
+      return ensureEquality('animationConfig', this, slideIds)
     },
-    set duration(duration: number) {
-      setValue('duration', this, slideIds, duration)
+    set animationConfig(animationConfig: TRAnimationConfig) {
+      setValue('animationConfig', this, slideIds, animationConfig)
     },
     get preTransitionDelay(): number {
       return ensureEquality('preTransitionDelay', this, slideIds)

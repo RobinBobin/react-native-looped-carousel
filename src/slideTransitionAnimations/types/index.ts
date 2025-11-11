@@ -1,3 +1,4 @@
+export type { TRAnimationConfig } from './animationConfig'
 export type * from './commonSlideTransitionAnimationParams'
 export type * from './slideGroupTransitionAnimation'
 export type {

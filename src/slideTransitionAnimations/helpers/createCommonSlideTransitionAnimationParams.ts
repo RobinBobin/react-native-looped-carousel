@@ -4,7 +4,9 @@ import type { ICommonSlideTransitionAnimationParams } from '../types'
 export const createCommonSlideTransitionAnimationParams =
   (): ICommonSlideTransitionAnimationParams => {
     return {
-      duration: 1000,
+      animationConfig: {
+        duration: 1000
+      },
       preTransitionDelay: 1000
     }
   }

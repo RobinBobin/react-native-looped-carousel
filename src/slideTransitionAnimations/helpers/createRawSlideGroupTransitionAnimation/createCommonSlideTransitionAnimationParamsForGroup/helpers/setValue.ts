@@ -1,20 +1,22 @@
 import type { TRSlideIds } from '../../../../../mst'
 import type {
-  TCommonSlideTransitionAnimationParam,
+  TCommonSlideTransitionAnimationParamKey,
+  TCommonSlideTransitionAnimationParamValue,
   TRBaseSlideTransitionAnimations,
   TRCommonSlideTransitionAnimationParams
 } from '../../../../types'
 
 import { getBaseSlideTransitionAnimation } from '../../../getBaseSlideTransitionAnimation'
 
-export const setValue = (
-  param: TCommonSlideTransitionAnimationParam,
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
+export const setValue = <T extends TCommonSlideTransitionAnimationParamValue>(
+  key: TCommonSlideTransitionAnimationParamKey,
   rawAnimation: TRCommonSlideTransitionAnimationParams &
     TRBaseSlideTransitionAnimations,
   slideIds: TRSlideIds,
-  value: number
+  value: T
 ): void => {
   slideIds.forEach(slideId => {
-    getBaseSlideTransitionAnimation(rawAnimation, slideId)[param] = value
+    ;(getBaseSlideTransitionAnimation(rawAnimation, slideId)[key] as T) = value
   })
 }

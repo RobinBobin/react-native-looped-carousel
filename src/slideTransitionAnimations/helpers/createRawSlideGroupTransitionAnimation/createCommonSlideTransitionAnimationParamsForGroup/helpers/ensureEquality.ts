@@ -1,32 +1,40 @@
 import type { TRSlideIds } from '../../../../../mst'
 import type {
-  TCommonSlideTransitionAnimationParam,
+  TCommonSlideTransitionAnimationParamKey,
+  TCommonSlideTransitionAnimationParamValue,
   TRBaseSlideTransitionAnimations,
   TRCommonSlideTransitionAnimationParams
 } from '../../../../types'
 
-import { isNumber } from 'radashi'
+import { isEqual, isNullish } from 'radashi'
 import { verify } from 'simple-common-utils'
 
 import { getBaseSlideTransitionAnimation } from '../../../getBaseSlideTransitionAnimation'
 
-export const ensureEquality = (
-  param: TCommonSlideTransitionAnimationParam,
+export const ensureEquality = <
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
+  T extends TCommonSlideTransitionAnimationParamValue
+>(
+  key: TCommonSlideTransitionAnimationParamKey,
   rawAnimation: TRCommonSlideTransitionAnimationParams &
     TRBaseSlideTransitionAnimations,
   slideIds: TRSlideIds
-): number => {
+): T => {
   const values = slideIds.map(
-    slideId => getBaseSlideTransitionAnimation(rawAnimation, slideId)[param]
-  )
+    slideId => getBaseSlideTransitionAnimation(rawAnimation, slideId)[key]
+  ) as T[]
 
-  const errorMessage = `'ensureEquality(${param})' failed: [${values.join(', ')}]`
+  const areEqual = values.every((value, index, array) => {
+    return !index || isEqual(value, array[0])
+  })
 
-  verify(Math.max(...values) === Math.min(...values), errorMessage)
+  const errorMessage = `'ensureEquality(${key})' failed: ${JSON.stringify(values)}`
+
+  verify(areEqual, errorMessage)
 
   const [value] = values
 
-  verify(isNumber(value), errorMessage)
+  verify(!isNullish(value), errorMessage)
 
   return value
 }
