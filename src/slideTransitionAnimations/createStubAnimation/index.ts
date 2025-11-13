@@ -26,7 +26,7 @@ export const createStubAnimation = (
       slideId => slideId,
       () =>
         combine(createCommonSlideTransitionAnimationParams(), {
-          useStyle: noop
+          useStyle: () => ({})
         })
     ),
     {

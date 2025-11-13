@@ -1,7 +1,7 @@
-import type { ViewProps } from 'react-native'
-import type { AnimatedProps } from 'react-native-reanimated'
+import type { useAnimatedStyle } from 'react-native-reanimated'
 
-type TAnimatedViewStyle = AnimatedProps<ViewProps>['style']
-type TUseStyle = () => TAnimatedViewStyle
+type TAnimatedStyle = ReturnType<typeof useAnimatedStyle>
 
-export type { TAnimatedViewStyle, TUseStyle }
+type TUseStyle = () => TAnimatedStyle
+
+export type { TAnimatedStyle, TUseStyle }
