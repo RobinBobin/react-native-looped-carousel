@@ -1,7 +1,8 @@
+import type { ViewStyle } from 'react-native'
 import type { useAnimatedStyle } from 'react-native-reanimated'
 
-type TAnimatedStyle = ReturnType<typeof useAnimatedStyle>
+type TAnimatedViewStyle = ReturnType<typeof useAnimatedStyle<ViewStyle>>
 
-type TUseStyle = () => TAnimatedStyle
+type TUseStyle = () => TAnimatedViewStyle
 
-export type { TAnimatedStyle, TUseStyle }
+export type { TAnimatedViewStyle, TUseStyle }
