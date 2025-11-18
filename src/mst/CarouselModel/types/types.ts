@@ -1,4 +1,9 @@
-type TCarouselPlaceholder = React.ComponentType
+type TCarouselPlaceholderComponent = React.ComponentType
+
+type TItemDimensions = Readonly<{
+  height: number
+  width: number
+}>
 
 type TSlideId = `slide${number}`
 type TRSlideIds = readonly TSlideId[]
@@ -14,7 +19,8 @@ type TSlideDatum = Readonly<{
 type TSlideData = Readonly<Record<TSlideId, TSlideDatum>>
 
 export type {
-  TCarouselPlaceholder,
+  TCarouselPlaceholderComponent,
+  TItemDimensions,
   TRSlideIds,
   TSlideData,
   TSlideId,

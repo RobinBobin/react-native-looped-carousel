@@ -1,19 +1,26 @@
-import type { TSlideId, TWithCarouselModel } from '../../../../mst'
+import type { NativeMethods } from 'react-native'
+import type { TSlideProps } from './types'
 
+import { observer } from 'mobx-react-lite'
+import { isNullish } from 'radashi'
 import { StyleSheet } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { verify } from 'simple-common-utils'
 
-type TSlideProps<TItem> = TWithCarouselModel<TItem> &
-  Readonly<{
-    slideId: TSlideId
-  }>
+import { getItemRef } from './getItemRef'
 
-export function Slide<TItem>({
+function SlideRaw<TItem, TComponent extends NativeMethods>({
   carouselModel,
   slideId
-}: TSlideProps<TItem>): React.ReactElement {
-  const { Item, data, slideData, slideGroupTransitionAnimation } = carouselModel
+}: TSlideProps<TItem, TComponent>): React.ReactElement {
+  const {
+    Item,
+    data,
+    itemDimensions,
+    slideData,
+    slideGroupTransitionAnimation
+  } = carouselModel
+
   const slideDatum = slideData[slideId]
 
   verify(Item, "'Slide': 'Item' can't be nullish")
@@ -24,14 +31,18 @@ export function Slide<TItem>({
   )
 
   const { itemIndex, slideType } = slideDatum
-  const datum = data[itemIndex]
+  const item = data[itemIndex]
 
   verify(
-    datum,
-    `'Slide': 'datum' can't be nullish ('itemIndex' = ${itemIndex})`
+    !isNullish(item),
+    `'Slide': 'item' can't be nullish ('itemIndex' = ${itemIndex})`
   )
 
-  const { item } = datum
+  const itemRef = getItemRef(
+    itemDimensions,
+    itemIndex,
+    carouselModel.setItemDimensions
+  )
 
   return (
     <Animated.View
@@ -39,15 +50,21 @@ export function Slide<TItem>({
         StyleSheet.absoluteFill,
         slideGroupTransitionAnimation
           .getBaseSlideTransitionAnimation(slideId)
-          .useStyle()
+          .useStyle(),
+        itemDimensions[itemIndex]
       ]}
     >
       <Item
         index={itemIndex}
         item={item}
+        ref={itemRef}
         slideId={slideId}
         slideType={slideType}
       />
     </Animated.View>
   )
 }
+
+const Slide = observer(SlideRaw)
+
+export { Slide }

@@ -1,14 +1,19 @@
+import type { NativeMethods } from 'react-native'
 import type { UndefinedOnPartialDeep } from 'type-fest'
 import type { TWithCarouselModel } from '../../../mst'
 import type { TCarouselSetupCallback } from './carouselSetupCallback'
 
-interface IUseCarouselModelReturnType<TItem> extends TWithCarouselModel<TItem> {
-  carousel: React.ReactElement<TWithCarouselModel<TItem>>
+interface IUseCarouselModelReturnType<TItem, TComponent extends NativeMethods>
+  extends TWithCarouselModel<TItem, TComponent> {
+  carousel: React.ReactElement<TWithCarouselModel<TItem, TComponent>>
 }
 
-type TUseCarouselModelParams<TItem> = Readonly<
+type TUseCarouselModelParams<
+  TItem,
+  TComponent extends NativeMethods
+> = Readonly<
   UndefinedOnPartialDeep<{
-    onPostCreateModel?: TCarouselSetupCallback<TItem>
+    onPostCreateModel?: TCarouselSetupCallback<TItem, TComponent>
     onPreCreateModel?: () => void
   }>
 >

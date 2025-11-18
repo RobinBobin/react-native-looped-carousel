@@ -1,3 +1,4 @@
+import type { NativeMethods } from 'react-native'
 import type { TWithCarouselModel } from '../../../mst'
 
 import { observer } from 'mobx-react-lite'
@@ -5,9 +6,9 @@ import Animated from 'react-native-reanimated'
 
 import { Slide } from './Slide'
 
-function CarouselImplRaw<TItem>({
+function CarouselImplRaw<TItem, TComponent extends NativeMethods>({
   carouselModel
-}: TWithCarouselModel<TItem>): React.ReactElement {
+}: TWithCarouselModel<TItem, TComponent>): React.ReactElement {
   const {
     carouselContainerStyle,
     slideGroupTransitionAnimation: { slideIds }

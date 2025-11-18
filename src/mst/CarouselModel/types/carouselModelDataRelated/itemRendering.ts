@@ -1,12 +1,18 @@
+import type { RefCallback } from 'react'
+import type { NativeMethods } from 'react-native'
 import type { TSlideId, TSlideType } from '../types'
 
-interface IItemComponentProps<TItem> {
+interface IItemComponentProps<TItemTDatum, TComponent extends NativeMethods> {
   index: number
-  item: TItem
+  item: TItemTDatum
+  ref: RefCallback<TComponent>
   slideId: TSlideId
   slideType: TSlideType
 }
 
-type TItemComponent<TItem> = React.ComponentType<IItemComponentProps<TItem>>
+type TItemComponent<
+  TItemDatum,
+  TComponent extends NativeMethods
+> = React.ComponentType<IItemComponentProps<TItemDatum, TComponent>>
 
 export type { IItemComponentProps, TItemComponent }

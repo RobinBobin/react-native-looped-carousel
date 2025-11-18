@@ -1,21 +1,22 @@
-import type { IItemMetadata } from './itemMetadata'
+import type { NativeMethods } from 'react-native'
 import type { TItemComponent } from './itemRendering'
 
 // Type 'ICarouselModelDataRelatedActions' does not satisfy the constraint 'ModelActions'.
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-type TCarouselModelDataRelatedActions<TItem> = {
-  setData: (data: readonly TItem[]) => void
-  setItemComponent: (Item: TItemComponent<TItem>) => void
+type TCarouselModelDataRelatedActions<
+  TItemDatum,
+  TComponent extends NativeMethods
+> = {
+  setData: (data: readonly TItemDatum[]) => void
+  setItemComponent: (Item: TItemComponent<TItemDatum, TComponent>) => void
 }
 
-type TDatum<TItem> = Readonly<{
-  item: TItem
-  itemMetadata: IItemMetadata
-}>
-
-interface ICarouselModelDataRelatedVolatile<TItem> {
-  Item?: TItemComponent<TItem>
-  data: readonly TDatum<TItem>[]
+interface ICarouselModelDataRelatedVolatile<
+  TItemDatum,
+  TComponent extends NativeMethods
+> {
+  Item?: TItemComponent<TItemDatum, TComponent>
+  data: readonly TItemDatum[]
 }
 
 export type {

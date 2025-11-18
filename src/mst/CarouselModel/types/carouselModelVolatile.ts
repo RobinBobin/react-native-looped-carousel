@@ -2,13 +2,13 @@ import type { StyleProp } from 'react-native'
 import type { TSlideGroupTransitionAnimation } from '../../../slideTransitionAnimations'
 import type { TAnimatedViewStyle } from '../../../slideTransitionAnimations/types'
 import type {
-  TCarouselPlaceholder,
+  TCarouselPlaceholderComponent,
   TSlideData,
   TTransitionDirection
 } from './types'
 
 export interface ICarouselModelVolatile {
-  CarouselPlaceholder?: TCarouselPlaceholder
+  CarouselPlaceholder?: TCarouselPlaceholderComponent
   _slideGroupTransitionAnimation?: TSlideGroupTransitionAnimation
   carouselContainerStyle?: StyleProp<TAnimatedViewStyle>
   isAutoTransitionStarted: boolean

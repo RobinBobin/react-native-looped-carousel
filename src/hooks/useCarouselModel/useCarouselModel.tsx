@@ -1,3 +1,4 @@
+import type { NativeMethods } from 'react-native'
 import type { ICarouselModelInstance } from '../../mst'
 import type {
   IUseCarouselModelReturnType,
@@ -9,15 +10,21 @@ import { useMemo } from 'react'
 import { Carousel } from '../../components'
 import { CarouselModel } from '../../mst'
 
-export function useCarouselModel<TItem>({
+export function useCarouselModel<TItem, TComponent extends NativeMethods>({
   onPostCreateModel,
   onPreCreateModel
-}: TUseCarouselModelParams<TItem> = {}): IUseCarouselModelReturnType<TItem> {
+}: TUseCarouselModelParams<
+  TItem,
+  TComponent
+> = {}): IUseCarouselModelReturnType<TItem, TComponent> {
   return useMemo(() => {
     onPreCreateModel?.()
 
     const carouselModel =
-      CarouselModel.create() as ICarouselModelInstance<TItem>
+      CarouselModel.create() as unknown as ICarouselModelInstance<
+        TItem,
+        TComponent
+      >
 
     onPostCreateModel?.(carouselModel)
 

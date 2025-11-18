@@ -1,10 +1,14 @@
+import type { NativeMethods } from 'react-native'
 import type { TWithCarouselModel } from '../../../mst'
 
 import { Text } from 'react-native'
 
-export function CarouselPlaceholderImpl<TItem>({
+export function CarouselPlaceholderImpl<
+  TItem,
+  TComponent extends NativeMethods
+>({
   carouselModel: { CarouselPlaceholder }
-}: TWithCarouselModel<TItem>): React.ReactElement {
+}: TWithCarouselModel<TItem, TComponent>): React.ReactElement {
   return CarouselPlaceholder ?
       <CarouselPlaceholder />
     : <Text>Carousel placeholder</Text>

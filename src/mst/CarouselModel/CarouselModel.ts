@@ -1,5 +1,5 @@
 import type { Instance } from 'mobx-state-tree'
-import type { StyleProp } from 'react-native'
+import type { NativeMethods, StyleProp } from 'react-native'
 import type {
   TAnimatedViewStyle,
   TRSlideGroupTransitionAnimation,
@@ -10,8 +10,9 @@ import type {
   ICarouselModelVolatile,
   TCarouselModelCommonActions,
   TCarouselModelDataRelatedActions,
-  TCarouselPlaceholder,
+  TCarouselPlaceholderComponent,
   TItemComponent,
+  TItemDimensions,
   TTransitionDirection
 } from './types'
 
@@ -22,8 +23,10 @@ import { MstNullishError, verify } from 'simple-common-utils'
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
 const CarouselModel = types
-  .model('CarouselModel')
-  .volatile<ICarouselModelDataRelatedVolatile<unknown>>(() => ({
+  .model('CarouselModel', {
+    itemDimensions: types.array(types.frozen<TItemDimensions>())
+  })
+  .volatile<ICarouselModelDataRelatedVolatile<unknown, NativeMethods>>(() => ({
     data: []
   }))
   .volatile<ICarouselModelVolatile>(() => ({
@@ -108,13 +111,16 @@ const CarouselModel = types
       )
     }
   }))
-  .actions<TCarouselModelDataRelatedActions<unknown>>(self => ({
+  .actions<TCarouselModelDataRelatedActions<unknown, NativeMethods>>(self => ({
     setData(this: void, data: readonly unknown[]): void {
-      self.data = data.map(item => ({ item, itemMetadata: {} }))
+      self.data = data
 
       self.setSlideData()
     },
-    setItemComponent(this: void, Item: TItemComponent<unknown>): void {
+    setItemComponent(
+      this: void,
+      Item: TItemComponent<unknown, NativeMethods>
+    ): void {
       self.Item = Item
     }
   }))
@@ -142,7 +148,7 @@ const CarouselModel = types
     },
     setCarouselPlaceholderComponent(
       this: void,
-      CarouselPlaceholder: TCarouselPlaceholder
+      CarouselPlaceholder: TCarouselPlaceholderComponent
     ): void {
       self.CarouselPlaceholder = CarouselPlaceholder
     },
@@ -165,6 +171,13 @@ const CarouselModel = types
     afterCreate(): void {
       self.setSlideGroupTransitionAnimation(createStubAnimation(self))
     },
+    setItemDimensions(
+      this: void,
+      dimensions: TItemDimensions,
+      index: number
+    ): void {
+      self.itemDimensions[index] = dimensions
+    },
     startAutoTransition(
       this: void,
       transitionDirection: TTransitionDirection
@@ -180,14 +193,14 @@ const CarouselModel = types
   }))
 
 type TKeysToOmit =
-  | keyof ICarouselModelDataRelatedVolatile<unknown>
-  | keyof TCarouselModelDataRelatedActions<unknown>
+  | keyof ICarouselModelDataRelatedVolatile<unknown, NativeMethods>
+  | keyof TCarouselModelDataRelatedActions<unknown, NativeMethods>
 
 type TOmittedInstance = Omit<Instance<typeof CarouselModel>, TKeysToOmit>
 
-export interface ICarouselModelInstance<TItem>
+export interface ICarouselModelInstance<TItem, TComponent extends NativeMethods>
   extends TOmittedInstance,
-    TCarouselModelDataRelatedActions<TItem>,
-    ICarouselModelDataRelatedVolatile<TItem> {}
+    TCarouselModelDataRelatedActions<TItem, TComponent>,
+    ICarouselModelDataRelatedVolatile<TItem, TComponent> {}
 
 export { CarouselModel }
