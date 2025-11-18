@@ -1,7 +1,7 @@
 import type { TWithCarouselModel } from '../../../mst'
 
 import { observer } from 'mobx-react-lite'
-import { View } from 'react-native'
+import Animated from 'react-native-reanimated'
 
 import { Slide } from './Slide'
 
@@ -14,11 +14,11 @@ function CarouselImplRaw<TItem>({
   } = carouselModel
 
   return (
-    <View style={carouselContainerStyle}>
+    <Animated.View style={carouselContainerStyle}>
       {slideIds.map(slideId => (
         <Slide carouselModel={carouselModel} key={slideId} slideId={slideId} />
       ))}
-    </View>
+    </Animated.View>
   )
 }
 

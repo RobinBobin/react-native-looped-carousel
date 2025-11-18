@@ -1,6 +1,7 @@
 import type { Instance } from 'mobx-state-tree'
-import type { StyleProp, ViewStyle } from 'react-native'
+import type { StyleProp } from 'react-native'
 import type {
+  TAnimatedViewStyle,
   TRSlideGroupTransitionAnimation,
   TSlideGroupTransitionAnimation
 } from '../../slideTransitionAnimations/types'
@@ -135,7 +136,7 @@ const CarouselModel = types
     },
     setCarouselContainerStyle(
       this: void,
-      carouselContainerStyle: StyleProp<ViewStyle>
+      carouselContainerStyle: StyleProp<TAnimatedViewStyle>
     ): void {
       self.carouselContainerStyle = carouselContainerStyle
     },
