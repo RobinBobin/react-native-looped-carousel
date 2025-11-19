@@ -5,7 +5,8 @@ type TItemDimensions = Readonly<{
   width: number
 }>
 
-type TSlideId = `slide${number}`
+type TSlideKey = 'slide'
+type TSlideId = `${TSlideKey}${number}`
 type TRSlideIds = readonly TSlideId[]
 
 type TTransitionDirection = 'next' | 'previous'
@@ -24,6 +25,7 @@ export type {
   TRSlideIds,
   TSlideData,
   TSlideId,
+  TSlideKey,
   TSlideType,
   TTransitionDirection
 }

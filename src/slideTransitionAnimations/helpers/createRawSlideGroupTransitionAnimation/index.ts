@@ -1,6 +1,6 @@
 import type {
   TRawSlideGroupTransitionAnimation,
-  TRWithActiveSlideCount
+  TRWithSlideCount
 } from '../../types'
 
 import { combine } from '../combine'
@@ -11,16 +11,16 @@ import { createWithPrepare } from './createWithPrepare'
 
 // eslint-disable-next-line id-length
 export const createRawSlideGroupTransitionAnimation = (
-  withActiveSlideCount: TRWithActiveSlideCount
+  withSlideCount: TRWithSlideCount
 ): TRawSlideGroupTransitionAnimation => {
-  const { slideIds } = withActiveSlideCount
+  const { slideIds } = withSlideCount
 
   const animation = combine(
     createCommonSlideTransitionAnimationParamsForGroup(slideIds),
     createIsAnimationInProgress(slideIds),
-    withActiveSlideCount,
     createWithGetBaseSlideTransitionAnimation(),
-    createWithPrepare(slideIds)
+    createWithPrepare(slideIds),
+    withSlideCount
   )
 
   return animation

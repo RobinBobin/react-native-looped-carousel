@@ -8,7 +8,7 @@ export type {
   TSlideTransitionAnimation
 } from './slideTransitionAnimation'
 export * from './types'
-export * from './withActiveSlideCount'
 export * from './withAnimation'
 export * from './withGetBaseSlideTransitionAnimation'
 export * from './withPrepare'
+export * from './withSlideCount'

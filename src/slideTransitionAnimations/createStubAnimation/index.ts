@@ -7,22 +7,20 @@ import {
   combine,
   createCommonSlideTransitionAnimationParams,
   createRawSlideGroupTransitionAnimation,
-  createWithActiveSlideCount
+  createWithSlideCount
 } from '../helpers'
 
 export const createStubAnimation = (
   carouselModel: TRCarouselModel
 ): TSlideGroupTransitionAnimation => {
-  const withActiveSlideCount = createWithActiveSlideCount({
-    carouselModel,
-    max: 1,
-    min: 1
+  const withSlideCount = createWithSlideCount({
+    carouselModel
   })
 
   const animation = combine(
-    createRawSlideGroupTransitionAnimation(withActiveSlideCount),
+    createRawSlideGroupTransitionAnimation(withSlideCount),
     objectify(
-      withActiveSlideCount.slideIds,
+      withSlideCount.slideIds,
       slideId => slideId,
       () =>
         combine(createCommonSlideTransitionAnimationParams(), {

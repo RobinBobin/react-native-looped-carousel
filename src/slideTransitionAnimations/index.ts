@@ -3,7 +3,7 @@ export {
   combine,
   createCommonSlideTransitionAnimationParams,
   createRawSlideGroupTransitionAnimation,
-  createWithActiveSlideCount
+  createWithSlideCount
 } from './helpers'
 export type {
   TSlideGroupTransitionAnimation,

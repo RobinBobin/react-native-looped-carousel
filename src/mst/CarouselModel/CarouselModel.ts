@@ -13,12 +13,13 @@ import type {
   TCarouselPlaceholderComponent,
   TItemComponent,
   TItemDimensions,
+  TSlideKey,
   TTransitionDirection
 } from './types'
 
 import { types } from 'mobx-state-tree'
 import { objectify } from 'radashi'
-import { MstNullishError, verify } from 'simple-common-utils'
+import { MstFormattedError, MstNullishError, verify } from 'simple-common-utils'
 
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
@@ -83,28 +84,46 @@ const CarouselModel = types
         return
       }
 
-      const { slideIds } = self.slideGroupTransitionAnimation
+      const { activeSlideCount, previousSlideCount, slideIds } =
+        self.slideGroupTransitionAnimation
 
-      let itemIndex = -1
+      verify(
+        slideIds.length <= self.data.length,
+        new MstFormattedError({
+          entityName: 'setSlideData()',
+          message: `slideIds.length (${slideIds.length}) must be <= self.data.length (${self.data.length})`,
+          model: self
+        })
+      )
+
+      const slideKey: TSlideKey = 'slide'
+
+      let itemIndex = self.data.length - previousSlideCount.count - 1
 
       self.slideData = objectify(
         slideIds,
         slideId => slideId,
-        (_, index) => {
-          if (!index) {
+        slideId => {
+          const _slideId = Number(slideId.substring(slideKey.length))
+
+          ++itemIndex
+
+          if (_slideId <= previousSlideCount.count) {
             return {
-              itemIndex: self.data.length - 1,
+              itemIndex,
               slideType: 'previous'
             }
           }
 
-          ++itemIndex
           itemIndex %= self.data.length
 
-          const slideType = index === slideIds.length - 1 ? 'next' : 'active'
+          const slideType =
+            _slideId <= previousSlideCount.count + activeSlideCount.count ?
+              'active'
+            : 'next'
 
           return {
-            itemIndex,
+            itemIndex: _slideId - previousSlideCount.count - 1,
             slideType
           }
         }
