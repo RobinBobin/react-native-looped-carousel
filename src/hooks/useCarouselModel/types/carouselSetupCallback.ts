@@ -1,6 +1,6 @@
 import type { NativeMethods } from 'react-native'
-import type { ICarouselModelInstance } from '../../../mst'
+import type { TCarouselModelInstance } from '../../../mst/CarouselModel'
 
 export type TCarouselSetupCallback<TItem, TComponent extends NativeMethods> = (
-  carouselModel: ICarouselModelInstance<TItem, TComponent>
+  carouselModel: TCarouselModelInstance<TItem, TComponent>
 ) => void

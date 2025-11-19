@@ -1,5 +1,5 @@
 import type { NativeMethods } from 'react-native'
-import type { ICarouselModelInstance } from '../../mst'
+import type { TCarouselModelInternalInstance } from '../../mst/CarouselModel'
 import type {
   IUseCarouselModelReturnType,
   TUseCarouselModelParams
@@ -21,7 +21,7 @@ export function useCarouselModel<TItem, TComponent extends NativeMethods>({
     onPreCreateModel?.()
 
     const carouselModel =
-      CarouselModel.create() as unknown as ICarouselModelInstance<
+      CarouselModel.create() as unknown as TCarouselModelInternalInstance<
         TItem,
         TComponent
       >

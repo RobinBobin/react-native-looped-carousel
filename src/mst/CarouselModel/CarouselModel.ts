@@ -195,12 +195,24 @@ const CarouselModel = types
 type TKeysToOmit =
   | keyof ICarouselModelDataRelatedVolatile<unknown, NativeMethods>
   | keyof TCarouselModelDataRelatedActions<unknown, NativeMethods>
+  | '_slideGroupTransitionAnimation'
+  | 'afterCreate'
+  | 'setSlideData'
 
 type TOmittedInstance = Omit<Instance<typeof CarouselModel>, TKeysToOmit>
 
-export interface ICarouselModelInstance<TItem, TComponent extends NativeMethods>
-  extends TOmittedInstance,
-    TCarouselModelDataRelatedActions<TItem, TComponent>,
-    ICarouselModelDataRelatedVolatile<TItem, TComponent> {}
+type TCarouselModelInternalInstance<
+  TItem,
+  TComponent extends NativeMethods
+> = TOmittedInstance &
+  TCarouselModelDataRelatedActions<TItem, TComponent> &
+  ICarouselModelDataRelatedVolatile<TItem, TComponent>
+
+type TCarouselModelInstance<TItem, TComponent extends NativeMethods> = Omit<
+  TCarouselModelInternalInstance<TItem, TComponent>,
+  'setItemDimensions' | 'slideGroupTransitionAnimation' | 'slideData'
+>
+
+export type { TCarouselModelInstance, TCarouselModelInternalInstance }
 
 export { CarouselModel }

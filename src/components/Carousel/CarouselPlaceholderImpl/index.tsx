@@ -1,5 +1,5 @@
 import type { NativeMethods } from 'react-native'
-import type { TWithCarouselModel } from '../../../mst'
+import type { TWithCarouselModel } from '../../../mst/CarouselModel'
 
 import { Text } from 'react-native'
 

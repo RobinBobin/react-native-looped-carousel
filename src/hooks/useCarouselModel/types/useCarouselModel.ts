@@ -1,6 +1,6 @@
 import type { NativeMethods } from 'react-native'
 import type { UndefinedOnPartialDeep } from 'type-fest'
-import type { TWithCarouselModel } from '../../../mst'
+import type { TWithCarouselModel } from '../../../mst/CarouselModel'
 import type { TCarouselSetupCallback } from './carouselSetupCallback'
 
 interface IUseCarouselModelReturnType<TItem, TComponent extends NativeMethods>

@@ -1,14 +1,14 @@
 import type { RefCallback } from 'react'
 import type { NativeMethods } from 'react-native'
 import type {
-  ICarouselModelInstance,
+  TCarouselModelInternalInstance,
   TItemDimensions
 } from '../../../../mst/CarouselModel'
 
 export const getItemRef = (
   itemDimensions: readonly TItemDimensions[],
   itemIndex: number,
-  setItemDimensions: ICarouselModelInstance<
+  setItemDimensions: TCarouselModelInternalInstance<
     unknown,
     NativeMethods
   >['setItemDimensions']

@@ -1,5 +1,6 @@
 import type { NativeMethods } from 'react-native'
-import type { TSlideId, TWithCarouselModel } from '../../../../mst'
+import type { TSlideId } from '../../../../mst'
+import type { TWithCarouselModel } from '../../../../mst/CarouselModel'
 
 export type TSlideProps<
   TItem,

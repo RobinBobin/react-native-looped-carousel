@@ -30,7 +30,7 @@ export default defineConfig([
           allow: [
             {
               from: 'file',
-              name: ['ICarouselModelInstance']
+              name: ['TCarouselModelInstance', 'TCarouselModelInternalInstance']
             }
           ],
           ignoreInferredTypes: true

@@ -1,11 +1,10 @@
 export type {
-  ICarouselModelInstance,
   IItemComponentProps,
+  TCarouselModelInstance,
   TRCarouselModel,
   TRSlideIds,
   TSlideId,
   TSlideType,
-  TTransitionDirection,
-  TWithCarouselModel
+  TTransitionDirection
 } from './CarouselModel'
 export { CarouselModel } from './CarouselModel'
