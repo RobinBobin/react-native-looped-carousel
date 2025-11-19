@@ -38,6 +38,10 @@ function SlideRaw<TItem, TComponent extends NativeMethods>({
     `'Slide': 'item' can't be nullish ('itemIndex' = ${itemIndex})`
   )
 
+  const animatedStyle = slideGroupTransitionAnimation
+    .getBaseSlideTransitionAnimation(slideId)
+    .useStyle()
+
   const itemRef = getItemRef(
     itemDimensions,
     itemIndex,
@@ -48,9 +52,7 @@ function SlideRaw<TItem, TComponent extends NativeMethods>({
     <Animated.View
       style={[
         StyleSheet.absoluteFill,
-        slideGroupTransitionAnimation
-          .getBaseSlideTransitionAnimation(slideId)
-          .useStyle(),
+        animatedStyle,
         itemDimensions[itemIndex]
       ]}
     >
