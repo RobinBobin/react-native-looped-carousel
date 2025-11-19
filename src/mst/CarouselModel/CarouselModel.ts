@@ -197,7 +197,6 @@ type TKeysToOmit =
   | keyof TCarouselModelDataRelatedActions<unknown, NativeMethods>
   | '_slideGroupTransitionAnimation'
   | 'afterCreate'
-  | 'setSlideData'
 
 type TOmittedInstance = Omit<Instance<typeof CarouselModel>, TKeysToOmit>
 

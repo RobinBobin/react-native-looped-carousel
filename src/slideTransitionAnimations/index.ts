@@ -5,4 +5,7 @@ export {
   createRawSlideGroupTransitionAnimation,
   createWithActiveSlideCount
 } from './helpers'
-export type { TSlideGroupTransitionAnimation } from './types'
+export type {
+  TSlideGroupTransitionAnimation,
+  TSlideTransitionAnimation
+} from './types'
