@@ -18,7 +18,7 @@ import type {
 
 import { types } from 'mobx-state-tree'
 import { objectify } from 'radashi'
-import { MstFormattedError, MstNullishError, verify } from 'simple-common-utils'
+import { MstNullishError, verify } from 'simple-common-utils'
 
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
@@ -86,15 +86,6 @@ const CarouselModel = types
       const { activeSlideCount, previousSlideCount, slideIds } =
         self.slideGroupTransitionAnimation
 
-      verify(
-        slideIds.length <= self.data.length,
-        new MstFormattedError({
-          entityName: 'setSlideData()',
-          message: `slideIds.length (${slideIds.length}) must be <= self.data.length (${self.data.length})`,
-          model: self
-        })
-      )
-
       self.slideData = objectify(
         slideIds,
         slideId => slideId,
@@ -103,7 +94,9 @@ const CarouselModel = types
 
           if (isPreviousSlide) {
             const itemIndex =
-              self.data.length - previousSlideCount.count + slideIndex
+              Math.abs(
+                self.data.length - previousSlideCount.count + slideIndex
+              ) % self.data.length
 
             return {
               itemIndex,
@@ -114,8 +107,11 @@ const CarouselModel = types
           const isActiveSlide =
             slideIndex < previousSlideCount.count + activeSlideCount.count
 
+          const itemIndex =
+            (slideIndex - previousSlideCount.count) % self.data.length
+
           return {
-            itemIndex: slideIndex - previousSlideCount.count,
+            itemIndex,
             slideType: isActiveSlide ? 'active' : 'next'
           }
         }
