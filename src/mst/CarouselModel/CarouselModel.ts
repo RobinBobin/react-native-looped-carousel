@@ -17,8 +17,8 @@ import type {
 } from './types'
 
 import { types } from 'mobx-state-tree'
-import { objectify } from 'radashi'
-import { MstNullishError, verify } from 'simple-common-utils'
+import { assert, objectify } from 'radashi'
+import { MstNullishError } from 'simple-common-utils'
 
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
@@ -64,7 +64,7 @@ const CarouselModel = types
       return !self.isAutoTransitionStarted && self.canTransition
     },
     get slideGroupTransitionAnimation(): TSlideGroupTransitionAnimation {
-      verify(
+      assert(
         self._slideGroupTransitionAnimation,
         new MstNullishError({
           entityName: 'slideGroupTransitionAnimationVerified',

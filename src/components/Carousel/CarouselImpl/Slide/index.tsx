@@ -2,10 +2,9 @@ import type { NativeMethods } from 'react-native'
 import type { TSlideProps } from './types'
 
 import { observer } from 'mobx-react-lite'
-import { isNullish } from 'radashi'
+import { assert, isNullish } from 'radashi'
 import { StyleSheet } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { verify } from 'simple-common-utils'
 
 import { getItemRef } from './getItemRef'
 
@@ -23,9 +22,9 @@ function SlideRaw<TItem, TComponent extends NativeMethods>({
 
   const slideDatum = slideData[slideId]
 
-  verify(Item, "'Slide': 'Item' can't be nullish")
+  assert(Item, "'Slide': 'Item' can't be nullish")
 
-  verify(
+  assert(
     slideDatum,
     `'Slide': 'slideDatum' can't be nullish ('slideId' = '${slideId}')`
   )
@@ -33,7 +32,7 @@ function SlideRaw<TItem, TComponent extends NativeMethods>({
   const { itemIndex, slideType } = slideDatum
   const item = data[itemIndex]
 
-  verify(
+  assert(
     !isNullish(item),
     `'Slide': 'item' can't be nullish ('itemIndex' = ${itemIndex})`
   )

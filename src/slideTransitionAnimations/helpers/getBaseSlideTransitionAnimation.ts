@@ -4,7 +4,7 @@ import type {
   TRBaseSlideTransitionAnimations
 } from '../types'
 
-import { verify } from 'simple-common-utils'
+import { assert } from 'radashi'
 
 // eslint-disable-next-line id-length
 export const getBaseSlideTransitionAnimation = (
@@ -13,7 +13,7 @@ export const getBaseSlideTransitionAnimation = (
 ): IBaseSlideTransitionAnimation => {
   const animation = baseSlideTransitionAnimations[slideId]
 
-  verify(
+  assert(
     animation,
     `'getBaseSlideTransitionAnimation()': no slide transition animation for '${slideId}'`
   )

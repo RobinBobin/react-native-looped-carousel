@@ -6,8 +6,7 @@ import type {
   TRCommonSlideTransitionAnimationParams
 } from '../../../../types'
 
-import { isEqual, isNullish } from 'radashi'
-import { verify } from 'simple-common-utils'
+import { assert, isEqual, isNullish } from 'radashi'
 
 import { getBaseSlideTransitionAnimation } from '../../../getBaseSlideTransitionAnimation'
 
@@ -30,11 +29,11 @@ export const ensureEquality = <
 
   const errorMessage = `'ensureEquality(${key})' failed: ${JSON.stringify(values)}`
 
-  verify(areEqual, errorMessage)
+  assert(areEqual, errorMessage)
 
   const [value] = values
 
-  verify(!isNullish(value), errorMessage)
+  assert(!isNullish(value), errorMessage)
 
   return value
 }
