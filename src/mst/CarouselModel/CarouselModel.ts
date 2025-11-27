@@ -13,7 +13,6 @@ import type {
   TCarouselPlaceholderComponent,
   TItemComponent,
   TItemDimensions,
-  TSlideKey,
   TTransitionDirection
 } from './types'
 
@@ -22,6 +21,7 @@ import { objectify } from 'radashi'
 import { MstFormattedError, MstNullishError, verify } from 'simple-common-utils'
 
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
+import { SLIDE_ID_PREFIX } from './constants'
 
 const CarouselModel = types
   .model('CarouselModel', {
@@ -96,15 +96,13 @@ const CarouselModel = types
         })
       )
 
-      const slideKey: TSlideKey = 'slide'
-
       let itemIndex = self.data.length - previousSlideCount.count - 1
 
       self.slideData = objectify(
         slideIds,
         slideId => slideId,
         slideId => {
-          const _slideId = Number(slideId.substring(slideKey.length))
+          const _slideId = Number(slideId.substring(SLIDE_ID_PREFIX.length))
 
           ++itemIndex
 

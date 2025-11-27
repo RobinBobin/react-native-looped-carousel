@@ -1,3 +1,5 @@
+import type { SLIDE_ID_PREFIX } from '../constants'
+
 type TCarouselPlaceholderComponent = React.ComponentType
 
 type TItemDimensions = Readonly<{
@@ -5,8 +7,7 @@ type TItemDimensions = Readonly<{
   width: number
 }>
 
-type TSlideKey = 'slide'
-type TSlideId = `${TSlideKey}${number}`
+type TSlideId = `${typeof SLIDE_ID_PREFIX}${number}`
 type TRSlideIds = readonly TSlideId[]
 
 type TTransitionDirection = 'next' | 'previous'
@@ -25,7 +26,6 @@ export type {
   TRSlideIds,
   TSlideData,
   TSlideId,
-  TSlideKey,
   TSlideType,
   TTransitionDirection
 }
