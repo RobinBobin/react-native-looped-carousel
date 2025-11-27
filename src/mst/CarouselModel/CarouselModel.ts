@@ -21,7 +21,6 @@ import { objectify } from 'radashi'
 import { MstFormattedError, MstNullishError, verify } from 'simple-common-utils'
 
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
-import { SLIDE_ID_PREFIX } from './constants'
 
 const CarouselModel = types
   .model('CarouselModel', {
@@ -96,33 +95,28 @@ const CarouselModel = types
         })
       )
 
-      let itemIndex = self.data.length - previousSlideCount.count - 1
-
       self.slideData = objectify(
         slideIds,
         slideId => slideId,
-        slideId => {
-          const _slideId = Number(slideId.substring(SLIDE_ID_PREFIX.length))
+        (_, slideIndex) => {
+          const isPreviousSlide = slideIndex < previousSlideCount.count
 
-          ++itemIndex
+          if (isPreviousSlide) {
+            const itemIndex =
+              self.data.length - previousSlideCount.count + slideIndex
 
-          if (_slideId <= previousSlideCount.count) {
             return {
               itemIndex,
               slideType: 'previous'
             }
           }
 
-          itemIndex %= self.data.length
-
-          const slideType =
-            _slideId <= previousSlideCount.count + activeSlideCount.count ?
-              'active'
-            : 'next'
+          const isActiveSlide =
+            slideIndex < previousSlideCount.count + activeSlideCount.count
 
           return {
-            itemIndex: _slideId - previousSlideCount.count - 1,
-            slideType
+            itemIndex: slideIndex - previousSlideCount.count,
+            slideType: isActiveSlide ? 'active' : 'next'
           }
         }
       )

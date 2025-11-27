@@ -1,11 +1,11 @@
-import type { TRSlideIds, TSlideId } from '../../../mst'
-import type { IWithSlideCount } from '../../types'
+import type { TRSlideIds } from '../../../mst'
+import type { ISlideCount, IWithSlideCount } from '../../types'
 import type { TCreateWithSlideCountParams } from './types'
 
-import { assert, range } from 'radashi'
+import { assert } from 'radashi'
 
-import { SLIDE_ID_PREFIX } from '../../../mst/CarouselModel/constants'
 import { createSlideCount } from './createSlideCount'
+import { createSlideIds } from './createSlideIds'
 
 export const createWithSlideCount = ({
   carouselModel,
@@ -19,23 +19,18 @@ export const createWithSlideCount = ({
     slideCountRanges?.previous
   )
 
-  let _slideIds: TRSlideIds = []
+  const slideCount: [ISlideCount, ISlideCount, ISlideCount] = [
+    activeSlideCount,
+    nextSlideCount,
+    previousSlideCount
+  ]
+
+  let _slideIds: TRSlideIds = createSlideIds(slideCount)
 
   return {
     activeSlideCount,
     createSlideIds(): void {
-      const totalSlideCount =
-        this.previousSlideCount.count +
-        this.activeSlideCount.count +
-        this.nextSlideCount.count
-
-      _slideIds = Array.from(
-        range<TSlideId>(
-          1,
-          totalSlideCount,
-          index => `${SLIDE_ID_PREFIX}${index}`
-        )
-      )
+      _slideIds = createSlideIds(slideCount)
 
       carouselModel.setSlideData()
     },
