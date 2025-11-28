@@ -15,21 +15,14 @@ function SlideRaw<TItem, TComponent extends NativeMethods>({
   const {
     Item,
     data,
+    getSlideDatum,
     itemDimensions,
-    slideData,
     slideGroupTransitionAnimation
   } = carouselModel
 
-  const slideDatum = slideData[slideId]
-
   assert(Item, "'Slide': 'Item' can't be nullish")
 
-  assert(
-    slideDatum,
-    `'Slide': 'slideDatum' can't be nullish ('slideId' = '${slideId}')`
-  )
-
-  const { itemIndex, slideType } = slideDatum
+  const { itemIndex, slideType } = getSlideDatum(slideId)
   const item = data[itemIndex]
 
   assert(

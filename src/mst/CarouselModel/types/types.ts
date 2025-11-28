@@ -25,6 +25,7 @@ export type {
   TItemDimensions,
   TRSlideIds,
   TSlideData,
+  TSlideDatum,
   TSlideId,
   TSlideType,
   TTransitionDirection
