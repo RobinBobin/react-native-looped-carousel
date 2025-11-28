@@ -1,7 +1,11 @@
 import type {
-  TRawSlideGroupTransitionAnimation,
-  TRWithSlideCount
+  TRAnimationMethods,
+  TRWithSlideCount,
+  TSlideGroupTransitionAnimation
 } from '../../types'
+import type { TCreateSlideTransitionAnimation } from './types'
+
+import { objectify } from 'radashi'
 
 import { combine } from '../combine'
 import { createCommonSlideTransitionAnimationParamsForGroup } from './createCommonSlideTransitionAnimationParamsForGroup'
@@ -10,16 +14,26 @@ import { createWithGetBaseSlideTransitionAnimation } from './createWithGetBaseSl
 import { createWithPrepare } from './createWithPrepare'
 
 // eslint-disable-next-line id-length
-export const createRawSlideGroupTransitionAnimation = (
+export const createSlideGroupTransitionAnimation = (
+  animationMethods: TRAnimationMethods,
+  createSlideTransitionAnimation: TCreateSlideTransitionAnimation,
   withSlideCount: TRWithSlideCount
-): TRawSlideGroupTransitionAnimation => {
+): TSlideGroupTransitionAnimation => {
   const { slideIds } = withSlideCount
 
+  const slideTransitionAnimations = objectify(
+    slideIds,
+    slideId => slideId,
+    createSlideTransitionAnimation
+  )
+
   const animation = combine(
+    animationMethods,
     createCommonSlideTransitionAnimationParamsForGroup(slideIds),
     createIsAnimationInProgress(slideIds),
     createWithGetBaseSlideTransitionAnimation(),
     createWithPrepare(slideIds),
+    slideTransitionAnimations,
     withSlideCount
   )
 

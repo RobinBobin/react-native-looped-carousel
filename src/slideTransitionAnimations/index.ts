@@ -1,8 +1,9 @@
 export { VERY_BIG_NUMBER } from './constants'
+export type { TCreateSlideTransitionAnimation } from './helpers'
 export {
   combine,
   createCommonSlideTransitionAnimationParams,
-  createRawSlideGroupTransitionAnimation,
+  createSlideGroupTransitionAnimation,
   createWithSlideCount
 } from './helpers'
 export type {

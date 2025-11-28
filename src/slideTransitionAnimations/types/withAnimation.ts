@@ -6,6 +6,8 @@ interface IAnimationMethods {
   cancelInProgressAnimation: TCancelInProgressAnimation
 }
 
+type TRAnimationMethods = Readonly<IAnimationMethods>
+
 interface IIsAnimationInProgress {
   get isAnimationInProgress(): boolean
 }
@@ -17,5 +19,6 @@ export type {
   IIsAnimationInProgress,
   TAnimate,
   TCancelInProgressAnimation,
+  TRAnimationMethods,
   TWithAnimation
 }

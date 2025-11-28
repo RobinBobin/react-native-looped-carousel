@@ -6,21 +6,15 @@ import type { IWithGetBaseSlideTransitionAnimation } from './withGetBaseSlideTra
 import type { IWithPrepare } from './withPrepare'
 import type { IWithSlideCount } from './withSlideCount'
 
-type TRawSlideGroupTransitionAnimation = ICommonSlideTransitionAnimationParams &
+type TSlideGroupTransitionAnimation = IAnimationMethods &
+  ICommonSlideTransitionAnimationParams &
   IIsAnimationInProgress &
   IWithGetBaseSlideTransitionAnimation &
   IWithPrepare &
-  IWithSlideCount
-
-type TSlideGroupTransitionAnimation = IAnimationMethods &
-  TBaseSlideTransitionAnimations &
-  TRawSlideGroupTransitionAnimation
+  IWithSlideCount &
+  TBaseSlideTransitionAnimations
 
 type TRSlideGroupTransitionAnimation =
   ReadonlyDeep<TSlideGroupTransitionAnimation>
 
-export type {
-  TRawSlideGroupTransitionAnimation,
-  TRSlideGroupTransitionAnimation,
-  TSlideGroupTransitionAnimation
-}
+export type { TRSlideGroupTransitionAnimation, TSlideGroupTransitionAnimation }
