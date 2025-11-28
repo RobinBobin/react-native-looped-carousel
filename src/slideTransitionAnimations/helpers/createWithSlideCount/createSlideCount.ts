@@ -5,8 +5,11 @@ import { assert } from 'radashi'
 
 export const createSlideCount = (
   tag: string,
-  { max, min }: TSlideCountRange = { max: 1, min: 1 }
+  range?: TSlideCountRange
 ): ISlideCount => {
+  const max = range?.max ?? 1
+  const min = range?.min ?? 1
+
   assert(min >= 1, `'createSlideCount(${tag})': min (${min}) must be >= 1`)
 
   assert(

@@ -1,6 +1,6 @@
 import type { TRCarouselModel } from '../../../mst/CarouselModel'
 
-type TSlideCountRange = Readonly<{ max: number; min: number }>
+type TSlideCountRange = Readonly<{ max: number; min?: number }>
 
 type TRanges = Readonly<{
   active?: TSlideCountRange
