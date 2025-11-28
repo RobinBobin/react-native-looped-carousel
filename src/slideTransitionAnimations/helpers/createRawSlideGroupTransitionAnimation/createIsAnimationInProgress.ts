@@ -4,7 +4,7 @@ import type {
   TRSlideTransitionAnimations
 } from '../../types'
 
-import { getSlideTransitionAnimation } from './createWithPrepare/getSlideTransitionAnimation'
+import { getSlideTransitionAnimation } from './helpers'
 
 export const createIsAnimationInProgress = (
   slideIds: TRSlideIds

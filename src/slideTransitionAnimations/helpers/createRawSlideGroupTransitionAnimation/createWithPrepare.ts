@@ -1,7 +1,7 @@
-import type { TRSlideIds } from '../../../../mst'
-import type { IWithPrepare, TRSlideTransitionAnimations } from '../../../types'
+import type { TRSlideIds } from '../../../mst'
+import type { IWithPrepare, TRSlideTransitionAnimations } from '../../types'
 
-import { getSlideTransitionAnimation } from './getSlideTransitionAnimation'
+import { getSlideTransitionAnimation } from './helpers'
 
 export const createWithPrepare = (
   slideIds: TRSlideIds
