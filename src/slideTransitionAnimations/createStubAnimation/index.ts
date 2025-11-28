@@ -17,17 +17,18 @@ export const createStubAnimation = (
     carouselModel
   })
 
-  const animation = createSlideGroupTransitionAnimation(
-    {
+  const animation = createSlideGroupTransitionAnimation({
+    animationMethods: {
       animate: noop,
       cancelInProgressAnimation: noop
     },
-    () =>
+    carouselModel,
+    createSlideTransitionAnimation: () =>
       combine(createCommonSlideTransitionAnimationParams(), {
         useStyle: () => ({})
       }),
     withSlideCount
-  )
+  })
 
   return animation
 }

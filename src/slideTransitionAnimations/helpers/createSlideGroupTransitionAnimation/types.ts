@@ -1,13 +1,37 @@
-import type { objectify } from 'radashi'
-import type { TSlideId } from '../../../mst'
-import type { TSlideTransitionAnimation } from '../../types'
-
-type TObjectify = typeof objectify<
-  TSlideId,
-  TSlideId,
+import type { TRCarouselModel, TSlideId } from '../../../mst'
+import type {
+  TAxes,
+  TRAnimationMethods,
+  TRWithSlideCount,
   TSlideTransitionAnimation
+} from '../../types'
+
+interface ICommonParams {
+  axes?: TAxes | undefined
+  carouselModel: TRCarouselModel
+}
+
+type TCreateSlideTransitionAnimationParams = Readonly<
+  ICommonParams & {
+    slideId: TSlideId
+    slideIndex: number
+  }
 >
 
-type TGetValue = Parameters<TObjectify>[2]
+type TCreateSlideTransitionAnimation = (
+  params: TCreateSlideTransitionAnimationParams
+) => TSlideTransitionAnimation
 
-export type TCreateSlideTransitionAnimation = Exclude<TGetValue, undefined>
+type TCreateSlideGroupTransitionAnimationParams = Readonly<
+  ICommonParams & {
+    animationMethods: TRAnimationMethods
+    createSlideTransitionAnimation: TCreateSlideTransitionAnimation
+    withSlideCount: TRWithSlideCount
+  }
+>
+
+export type {
+  TCreateSlideGroupTransitionAnimationParams,
+  TCreateSlideTransitionAnimation,
+  TCreateSlideTransitionAnimationParams
+}

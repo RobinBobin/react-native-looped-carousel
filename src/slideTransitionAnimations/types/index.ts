@@ -1,5 +1,7 @@
 export type { TRAnimationConfig } from './animationConfig'
+export type * from './axis'
 export type * from './commonSlideTransitionAnimationParams'
+export type { TRAxisSharedValues } from './sharedValue'
 export type * from './slideGroupTransitionAnimation'
 export type {
   IBaseSlideTransitionAnimation,

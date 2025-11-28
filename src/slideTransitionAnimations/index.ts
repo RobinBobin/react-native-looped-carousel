@@ -4,9 +4,14 @@ export {
   combine,
   createCommonSlideTransitionAnimationParams,
   createSlideGroupTransitionAnimation,
-  createWithSlideCount
+  createWithSlideCount,
+  mapAxesToSharedValues
 } from './helpers'
 export type {
+  TAxes,
+  TAxis,
+  TPrepare,
+  TRAxisSharedValues,
   TSlideGroupTransitionAnimation,
   TSlideTransitionAnimation
 } from './types'

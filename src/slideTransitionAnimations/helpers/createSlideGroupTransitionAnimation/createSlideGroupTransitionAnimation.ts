@@ -1,9 +1,5 @@
-import type {
-  TRAnimationMethods,
-  TRWithSlideCount,
-  TSlideGroupTransitionAnimation
-} from '../../types'
-import type { TCreateSlideTransitionAnimation } from './types'
+import type { TSlideGroupTransitionAnimation } from '../../types'
+import type { TCreateSlideGroupTransitionAnimationParams } from './types'
 
 import { objectify } from 'radashi'
 
@@ -14,17 +10,25 @@ import { createWithGetBaseSlideTransitionAnimation } from './createWithGetBaseSl
 import { createWithPrepare } from './createWithPrepare'
 
 // eslint-disable-next-line id-length
-export const createSlideGroupTransitionAnimation = (
-  animationMethods: TRAnimationMethods,
-  createSlideTransitionAnimation: TCreateSlideTransitionAnimation,
-  withSlideCount: TRWithSlideCount
-): TSlideGroupTransitionAnimation => {
+export const createSlideGroupTransitionAnimation = ({
+  animationMethods,
+  axes,
+  carouselModel,
+  createSlideTransitionAnimation,
+  withSlideCount
+}: TCreateSlideGroupTransitionAnimationParams): TSlideGroupTransitionAnimation => {
   const { slideIds } = withSlideCount
 
   const slideTransitionAnimations = objectify(
     slideIds,
     slideId => slideId,
-    createSlideTransitionAnimation
+    (slideId, slideIndex) =>
+      createSlideTransitionAnimation({
+        axes,
+        carouselModel,
+        slideId,
+        slideIndex
+      })
   )
 
   const animation = combine(

@@ -3,3 +3,4 @@ export { createCommonSlideTransitionAnimationParams } from './createCommonSlideT
 export * from './createSlideGroupTransitionAnimation'
 export { createWithSlideCount } from './createWithSlideCount'
 export { getBaseSlideTransitionAnimation } from './getBaseSlideTransitionAnimation'
+export { mapAxesToSharedValues } from './mapAxesToSharedValues'
