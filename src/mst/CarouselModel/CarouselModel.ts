@@ -20,7 +20,7 @@ import type {
 
 import { types } from 'mobx-state-tree'
 import { assert, objectify } from 'radashi'
-import { MstFormattedError, MstNullishError } from 'simple-common-utils'
+import { MstNullishError } from 'simple-common-utils'
 
 import { createStubAnimation } from '../../slideTransitionAnimations/createStubAnimation'
 
@@ -89,28 +89,6 @@ const CarouselModel = types
     }
   }))
   .actions<TCarouselModelCommonActions>(self => ({
-    getSlideOffset(_axis, slideId): number {
-      const { slideType } = self.getSlideDatum(slideId)
-
-      switch (slideType) {
-        case 'active':
-          return 0
-
-        case 'next':
-          return 0
-
-        case 'previous':
-          return 0
-      }
-
-      // @ts-expect-error In case new slide types are added.
-      throw new MstFormattedError({
-        entityName: 'getSlideOffset()',
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        message: `invalid slide type: ${slideType}`,
-        model: self
-      })
-    },
     setSlideData(): void {
       if (!self.data.length) {
         self.slideData = {}
